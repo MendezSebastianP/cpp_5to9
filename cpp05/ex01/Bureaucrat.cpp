@@ -31,7 +31,7 @@ Bureaucrat::Bureaucrat( std::string Name, int grade )
 
 Bureaucrat::~Bureaucrat( void )
 {
-	std::cout << DEST_MSG << " for Name: " << Name_ << std::endl;
+	std::cout << DEST_MSG << " for Bureaucrat. Name: " << Name_ << std::endl;
 }
 
 Bureaucrat::Bureaucrat( Bureaucrat const &src )

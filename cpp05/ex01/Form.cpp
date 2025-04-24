@@ -11,13 +11,13 @@
 # define DEST_MSG "\033[1;31mDestructor Form called\033[0m"
 
 Form::Form( void )
-	: Name_("Empty"), min_grade_sign_(50), min_grade_exe_(100)
+	: Name_("Empty"), is_signed_(false), min_grade_sign_(50), min_grade_exe_(100)
 {
 	std::cout << CONST_MSG << std::endl;
 }
 
 Form::Form( std::string Name )
-	: Name_(Name), min_grade_sign_(50), min_grade_exe_(100)
+	: Name_(Name), is_signed_(false), min_grade_sign_(50), min_grade_exe_(100)
 {
 	std::cout << CONST_N_MSG << Name << std::endl;
 }
@@ -25,7 +25,7 @@ Form::Form( std::string Name )
 
 Form::~Form( void )
 {
-	std::cout << DEST_MSG << " for Name: " << Name_ << std::endl;
+	std::cout << DEST_MSG << " for Form. Name: " << Name_ << std::endl;
 }
 
 Form::Form( Form const &src )
@@ -94,7 +94,7 @@ void Form::beSigned( Bureaucrat &bu)
 {
 	if (bu.getGrade() > min_grade_sign_)
 	{
-		throw Bureaucrat::GradeTooLowException();
+		throw Form::GradeTooLowException();
 	}
 	is_signed_ = true;
 }

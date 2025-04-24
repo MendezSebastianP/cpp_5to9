@@ -50,8 +50,10 @@ int	main(void)
 	std::cout << *raice_salaries;
 
 	sep(2, "SIGN FORMS");
-	sam->signForm(*more_taxes);
-	karen->signForm(*raice_salaries);
+	try { sam->signForm(*more_taxes); }
+	catch(const std::exception& e) { std::cerr << e.what() << '\n'; }
+	try { karen->signForm(*raice_salaries); }
+	catch(const std::exception& e) { std::cerr << e.what() << '\n'; }
 
 	sep(2, "CHECK FORMS (AGAIN...)");
 	std::cout << *more_taxes;

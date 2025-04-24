@@ -92,12 +92,12 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
 	return "\033[1;31mError\033[0m: Grade too low (limit 150).";
 }
 
-void Bureaucrat::signForm( Form &form )
+void Bureaucrat::signAForm( AForm &AForm )
 {
-	form.beSigned(*this);
-	if (form.isSigned() == "Signed")
+	AForm.beSigned(*this);
+	if (AForm.isSigned() == "Signed")
 	{
 		std::cout << this->getName() << " signed " 
-		<< form.getName() << std::endl;
+		<< AForm.getName() << std::endl;
 	}
 }

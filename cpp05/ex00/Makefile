@@ -3,20 +3,13 @@ CXXFLAGS  := -std=c++98 -Wall -Werror -Wextra -g
 DEPFLAGS  := -MMD -MP
 FLAGS     := $(CXXFLAGS) $(DEPFLAGS)
 
-SRCS      := main.cpp \
-             Character.cpp \
-             I_Character.cpp \
-             I_MateriaSource.cpp \
-             MateriaSource.cpp \
-             Materias/A_Materia.cpp \
-             Materias/Cure.cpp \
-             Materias/Ice.cpp
+SRCS      := main.cpp Bureaucrat.cpp
 
 TRASH_DIR := .trash
 OBJ       := $(patsubst %.cpp,$(TRASH_DIR)/%.o,$(SRCS))
 DEP       := $(OBJ:.o=.d)
 
-NAME      := Characters
+NAME      := Bureaucrats
 
 all: $(NAME)
 

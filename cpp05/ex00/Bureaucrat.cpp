@@ -13,11 +13,21 @@ Bureaucrat::Bureaucrat( void )
 	std::cout << CONST_MSG << std::endl;
 }
 
-Bureaucrat::Bureaucrat( std::string Name )
+Bureaucrat::Bureaucrat( std::string Name, int grade )
 	: Name_(Name)
 {
+	if (grade < 1)
+	{
+		throw Bureaucrat::GradeTooHighException();
+	}
+	else if (grade > 150)
+	{
+		throw Bureaucrat::GradeTooLowException();
+	}
+	grade_ = grade;
 	std::cout << CONST_N_MSG << Name << std::endl;
 }
+
 
 Bureaucrat::~Bureaucrat( void )
 {
@@ -25,7 +35,7 @@ Bureaucrat::~Bureaucrat( void )
 }
 
 Bureaucrat::Bureaucrat( Bureaucrat const &src )
-	: Name_(src.Name_)
+: Name_(src.Name_)
 {
 	std::cout << CPY_CONST_MSG << std::endl;
 	this->grade_ = src.grade_;
@@ -38,4 +48,46 @@ Bureaucrat & Bureaucrat::operator= (Bureaucrat const & rhs)
 	return *this;
 }
 
+std::ostream &operator<<( std::ostream &o,  Bureaucrat &rhs )
+{
+	o << "Bureaucrat name: " << rhs.getName() << ", bureaucrat grade " 
+	<< rhs.getGrade() << std::endl;
+	return o;
+}
 
+std::string Bureaucrat::getName()
+{
+	return this->Name_;
+}
+
+int Bureaucrat::getGrade()
+{
+	return this->grade_;
+}
+
+void Bureaucrat::decrementGrade()
+{
+
+	if (grade_ == 150)
+		{
+			throw Bureaucrat::GradeTooLowException();
+		}
+	grade_++;
+}
+
+void Bureaucrat::incrementGrade()
+{
+	if (grade_ == 1)
+		{
+			throw Bureaucrat::GradeTooLowException();
+		}
+	grade_--;
+}
+
+const char* Bureaucrat::GradeTooHighException::what() const throw() {
+	return "\033[1;31mError\033[0m: Grade too hight (limit 1).";
+}
+
+const char* Bureaucrat::GradeTooLowException::what() const throw() {
+	return "\033[1;31mError\033[0m: Grade too low (limit 150).";
+}

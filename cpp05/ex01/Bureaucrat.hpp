@@ -2,6 +2,9 @@
 # define BUREAUCRAT_HPP
 # include <iostream>
 # include <cctype>
+# include "Form.hpp"
+
+class Form;
 
 class Bureaucrat {
     public:
@@ -23,6 +26,7 @@ class Bureaucrat {
 		virtual const char *what() const throw();
 	};
 
+	void signForm( Form &form );
 	std::string getName();
 	int getGrade();
 	void incrementGrade();

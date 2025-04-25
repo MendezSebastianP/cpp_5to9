@@ -55,12 +55,12 @@ std::ostream &operator<<( std::ostream &o,  Bureaucrat &rhs )
 	return o;
 }
 
-std::string Bureaucrat::getName()
+std::string Bureaucrat::getName() const
 {
 	return this->Name_;
 }
 
-int Bureaucrat::getGrade()
+int Bureaucrat::getGrade() const
 {
 	return this->grade_;
 }
@@ -92,12 +92,22 @@ const char* Bureaucrat::GradeTooLowException::what() const throw() {
 	return "\033[1;31mError\033[0m: Grade too low (limit 150).";
 }
 
-void Bureaucrat::signAForm( AForm &AForm )
+void Bureaucrat::signAForm( AForm &form )
 {
-	AForm.beSigned(*this);
-	if (AForm.isSigned() == "Signed")
+	form.beSigned(*this);
+	if (form.isSigned() == "Signed")
 	{
 		std::cout << this->getName() << " signed " 
-		<< AForm.getName() << std::endl;
+		<< form.getName() << ", to: " << form.getTarget() << std::endl;
+	}
+}
+
+void Bureaucrat::executeForm(AForm const &form) const
+{
+	form.execute(*this);
+	if (form.isSigned() == "Signed")
+	{
+		std::cout << this->getName() << " executed " 
+		<< form.getName() << ", to: " << form.getTarget() << std::endl;
 	}
 }

@@ -11,8 +11,8 @@ class AForm {
     public:
 	// canonic
 	AForm( void );
-	AForm( std::string Name );
-	~AForm( void );
+	AForm( std::string Target, std::string target, bool is_signed, int min_sign, int min_exe );
+	virtual ~AForm( void );
 	AForm( AForm const &src);
 	AForm & operator =( AForm const & rhs);
 
@@ -27,14 +27,17 @@ class AForm {
 		virtual const char *what() const throw();
 	};
 
-	void beSigned( Bureaucrat &bu);
-	std::string getName() const;
-	std::string isSigned() const;
-	std::string getMinsign() const;
-	std::string getMinexe() const;
+	virtual void beSigned( Bureaucrat &bu) = 0;
+	virtual void execute(Bureaucrat const & executor) const;
+	virtual std::string getTarget() const;
+	virtual std::string getName() const;
+	virtual std::string isSigned() const;
+	virtual std::string getMinsign() const;
+	virtual std::string getMinexe() const;
 
-    private:
-    std::string const Name_;
+    protected:
+    std::string const Target_;
+	std::string const Name_;
 	bool is_signed_;
 	int const min_grade_sign_;
 	int const min_grade_exe_;

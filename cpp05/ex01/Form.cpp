@@ -87,7 +87,7 @@ const char* Form::GradeTooHighException::what() const throw() {
 }
 
 const char* Form::GradeTooLowException::what() const throw() {
-	return "\033[1;31mError\033[0m: Grade too low to sign (min 50).";
+	return "\033[1;31mError\033[0m: Grade too low to achive the action. .";
 }
 
 void Form::beSigned( Bureaucrat &bu)

@@ -3,7 +3,8 @@ CXXFLAGS  := -std=c++98 -Wall -Werror -Wextra -g
 DEPFLAGS  := -MMD -MP
 FLAGS     := $(CXXFLAGS) $(DEPFLAGS)
 
-SRCS      := main.cpp Bureaucrat.cpp AForm.cpp
+SRCS      := 	main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp \
+				PresidentialPardonForm.cpp RobotomyRequestForm.cpp
 
 TRASH_DIR := .trash
 OBJ       := $(patsubst %.cpp,$(TRASH_DIR)/%.o,$(SRCS))

@@ -5,31 +5,31 @@
 # include "AForm.hpp"
 # include "Bureaucrat.hpp"
 # define CONST_MSG "\033[1;32mDefault constructor AForm called\033[0m"
-# define CONST_N_MSG "\033[1;32mParametizered constructor AForm called, name: \033[0m"
+# define CONST_N_MSG "\033[1;32mParametizered constructor AForm called, Target: \033[0m"
 # define CPY_CONST_MSG "\033[1;32mCopy constructor AForm called\033[0m"
 # define CPY_ASSIG_OP_MSG "Copy assignment operator called"
 # define DEST_MSG "\033[1;31mDestructor AForm called\033[0m"
 
 AForm::AForm( void )
-	: Name_("Empty"), is_signed_(false), min_grade_sign_(50), min_grade_exe_(100)
+	: Target_("Empty"), Name_("Empty_name"), is_signed_(false), min_grade_sign_(50), min_grade_exe_(100)
 {
 	std::cout << CONST_MSG << std::endl;
 }
 
-AForm::AForm( std::string Name )
-	: Name_(Name), is_signed_(false), min_grade_sign_(50), min_grade_exe_(100)
+AForm::AForm( std::string Name, std::string target, bool is_signed, int min_sign, int min_exe )
+	: Target_(target), Name_(Name), is_signed_(is_signed), min_grade_sign_(min_sign), min_grade_exe_(min_exe)
 {
-	std::cout << CONST_N_MSG << Name << std::endl;
+	std::cout << CONST_N_MSG << target << std::endl;
 }
 
 
 AForm::~AForm( void )
 {
-	std::cout << DEST_MSG << " for AForm. Name: " << Name_ << std::endl;
+	std::cout << DEST_MSG << " for AForm. Target: " << Target_ << std::endl;
 }
 
 AForm::AForm( AForm const &src )
-	: Name_(src.Name_), min_grade_sign_(src.min_grade_sign_), 
+	: Target_(src.Target_), min_grade_sign_(src.min_grade_sign_), 
 	min_grade_exe_(src.min_grade_exe_)
 {
 	std::cout << CPY_CONST_MSG << std::endl;
@@ -47,12 +47,17 @@ AForm & AForm::operator= (AForm const & rhs)
 
 std::ostream &operator<<( std::ostream &o,  AForm &rhs )
 {
-	o << "AForm name: " << rhs.getName() << std::endl 
+	o << "AForm Target: " << rhs.getTarget() << std::endl 
 	<< "Is AForm signed: " << rhs.isSigned() << std::endl
 	<< "Minimum grade in order to sign " << rhs.getMinsign() << std::endl
 	<< "Minimum grade in order to execute " << rhs.getMinexe()
 	<< std::endl;
 	return o;
+}
+
+std::string AForm::getTarget() const
+{
+	return Target_;
 }
 
 std::string AForm::getName() const
@@ -87,17 +92,28 @@ const char* AForm::GradeTooHighException::what() const throw() {
 }
 
 const char* AForm::GradeTooLowException::what() const throw() {
-	return "\033[1;31mError\033[0m: Grade too low to sign (min 50).";
+	return "\033[1;31mError\033[0m: Grade too low to achive the action.";
 }
 
 void AForm::beSigned( Bureaucrat &bu)
 {
 	if (bu.getGrade() > min_grade_sign_)
 	{
-		std::cout << "The AForm |" << this->getName() << "| couldn’t be signed by " << bu.getName()
+		std::cout << "The AForm |" << this->getTarget() << "| couldn’t be signed by " << bu.getName()
 		<< " because the bureaucrat doesn't meet the conditions"
 		<< std::endl;
 		throw AForm::GradeTooLowException();
 	}
 	is_signed_ = true;
+}
+
+void AForm::execute(Bureaucrat const &executor) const
+{
+	if (executor.getGrade() > min_grade_exe_)
+	{
+		std::cout << "The AForm |" << this->getTarget() << "| couldn’t be signed by " << executor.getName()
+		<< " because the bureaucrat doesn't meet the conditions"
+		<< std::endl;
+		throw AForm::GradeTooLowException();
+	}
 }

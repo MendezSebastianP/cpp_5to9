@@ -1,8 +1,9 @@
-.trash/main.o: main.cpp Bureaucrat.hpp AForm.hpp \
+.trash/Intern.o: Intern.cpp Intern.hpp AForm.hpp Bureaucrat.hpp \
  ShrubberyCreationForm.hpp RobotomyRequestForm.hpp \
  PresidentialPardonForm.hpp
-Bureaucrat.hpp:
+Intern.hpp:
 AForm.hpp:
+Bureaucrat.hpp:
 ShrubberyCreationForm.hpp:
 RobotomyRequestForm.hpp:
 PresidentialPardonForm.hpp:

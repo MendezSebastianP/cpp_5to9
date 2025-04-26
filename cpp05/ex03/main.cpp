@@ -5,6 +5,7 @@
 # include "ShrubberyCreationForm.hpp"
 # include "RobotomyRequestForm.hpp"
 # include "PresidentialPardonForm.hpp"
+# include "Intern.hpp"
 
 void sep( size_t n, std::string msg)
 {
@@ -22,35 +23,33 @@ void sep( size_t n, std::string msg)
 		std::cout << std::endl;
 	}
 
-int	main(void)
+int main(void)
 {
-	Bureaucrat *sam;
-	Bureaucrat *karen;
-	Bureaucrat *xavier;
-	
-	sep(2, "CONSTRUCTOR");
-	AForm *tree_dictator = new ShrubberyCreationForm("Tree for dictator");
-	AForm *tree_legit = new ShrubberyCreationForm("legit tree to save the world");
+    sep(2, "CONSTRUCTOR");
+    Bureaucrat *sam;
+    Bureaucrat *karen;
+    Intern     intern;
 
-	AForm *robot_inocent = new RobotomyRequestForm("a grandma");
-	AForm *robot_politician = new RobotomyRequestForm("the mayor");
+    AForm *tree_dictator = intern.makeForm("ShrubberyCreationForm", "Tree for dictator");
+    AForm *tree_legit = intern.makeForm("ShrubberyCreationForm", "legit tree to save the world");
+    AForm *robot_inocent = intern.makeForm("RobotomyRequestForm", "a grandma");
+    AForm *robot_politician = intern.makeForm("RobotomyRequestForm", "the mayor");
+    AForm *presidents_brother = intern.makeForm("PresidentialPardonForm", "Dictators drunk big brother...");
+    AForm *national_heroe = intern.makeForm("PresidentialPardonForm", "A hero");
+	AForm *invalid = intern.makeForm("TaxReturnForm", "IRS");
+	(void)invalid;
 
-	AForm *presidents_brother = new PresidentialPardonForm("Dictators drunk big brother...");
-	AForm *national_heroe = new PresidentialPardonForm("A hero");
-	
-	try
-	{
-		sam = new Bureaucrat("Sam", 4);
-		karen = new Bureaucrat("Karen", 145);
-		xavier = new Bureaucrat("Xavier", 151);
-		(void)xavier;
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << '\n';
-	}
-	
-	sep(2, "CHECK BUREAUCRATS");
+    try
+    {
+        sam = new Bureaucrat("Sam", 4);
+        karen = new Bureaucrat("Karen", 145);
+    }
+    catch(const std::exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
+    
+    sep(2, "CHECK BUREAUCRATS");
 	std::cout << *sam;
 	std::cout << *karen;
 
@@ -108,15 +107,14 @@ int	main(void)
 	try { karen->executeForm(*national_heroe); }
 	catch(const std::exception& e) { std::cerr << e.what() << '\n'; }
 
-
-	sep(2, "DESTRUCTOR");
-	delete national_heroe;
-	delete presidents_brother;
-	delete robot_inocent;
-	delete robot_politician;
-	delete tree_legit;
-	delete tree_dictator;
-	delete karen;
-	delete sam;
-	return 0;
+    sep(2, "DESTRUCTOR");
+    delete national_heroe;
+    delete presidents_brother;
+    delete robot_inocent;
+    delete robot_politician;
+    delete tree_legit;
+    delete tree_dictator;
+    delete karen;
+    delete sam;
+    return 0;
 }

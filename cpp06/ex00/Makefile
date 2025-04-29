@@ -3,13 +3,13 @@ CXXFLAGS  := -std=c++98 -Wall -Werror -Wextra -g
 DEPFLAGS  := -MMD -MP
 FLAGS     := $(CXXFLAGS) $(DEPFLAGS)
 
-SRCS      := main.cpp Bureaucrat.cpp
+SRCS      := main.cpp ScalarConverter.cpp
 
 TRASH_DIR := .trash
 OBJ       := $(patsubst %.cpp,$(TRASH_DIR)/%.o,$(SRCS))
 DEP       := $(OBJ:.o=.d)
 
-NAME      := Bureaucrats
+NAME      := ScalarConverter
 
 all: $(NAME)
 

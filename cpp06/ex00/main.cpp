@@ -1,6 +1,6 @@
 # include <iostream>
 # include <cctype>
-// # include "ScalarConverter.hpp"
+# include "ScalarConverter.hpp"
 # define ARG_ERR "Please, put only one argument, it could be a <int>, sigle <char>, <float> or <double>"
 
 void sep( size_t n, std::string msg)
@@ -19,9 +19,7 @@ int	main(int argc, char **argv)
 	if (argc != 2)
 	{
 		std::cerr << ARG_ERR << std::endl;
-		return (EXIT_FAILURE);
+		return (1);
 	}
-
-	std::cout << std::to_string(SIZE_MAX) << " or " << std::to_string(std::string::npos) << std::endl;
-
+	ScalarConverter::convert(argv[1]);
 }

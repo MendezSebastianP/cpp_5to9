@@ -25,6 +25,19 @@ ScalarConverter::~ScalarConverter( void )
 	std::cout << DEST_MSG << " for Name: " << std::endl;
 }
 
+ScalarConverter::ScalarConverter( ScalarConverter const &src )
+{
+	*this = src;
+	std::cout << CPY_CONST_MSG << std::endl;
+}
+
+ScalarConverter & ScalarConverter::operator= (ScalarConverter const & rhs)
+{
+	std::cout << CPY_ASSIG_OP_MSG << std::endl;
+	(void)rhs;
+	return *this;
+}
+
 int ischar( std::string input, size_t len_input )
 {
 	if( len_input == 1 && !(std::isdigit(static_cast<unsigned char>(input[0]))) )

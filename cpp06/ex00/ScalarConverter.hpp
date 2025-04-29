@@ -8,6 +8,8 @@ class ScalarConverter {
 	// canonic
 	ScalarConverter( void );
 	~ScalarConverter( void );
+	ScalarConverter( ScalarConverter const &src);
+	ScalarConverter & operator =( ScalarConverter const & rhs);
 	
     public:
 	static void convert( const std::string &input );

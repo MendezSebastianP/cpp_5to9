@@ -3,13 +3,13 @@ CXXFLAGS  := -std=c++98 -Wall -Werror -Wextra -g
 DEPFLAGS  := -MMD -MP
 FLAGS     := $(CXXFLAGS) $(DEPFLAGS)
 
-SRCS      := main.cpp Data.cpp
+SRCS      := main.cpp 
 
 TRASH_DIR := .trash
 OBJ       := $(patsubst %.cpp,$(TRASH_DIR)/%.o,$(SRCS))
 DEP       := $(OBJ:.o=.d)
 
-NAME      := Iter
+NAME      := Array
 
 all: $(NAME)
 

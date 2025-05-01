@@ -1,5 +1,5 @@
-.trash/main.o: main.cpp Iter.hpp Iter.tpp
+.trash/main.o: main.cpp Iter.hpp Data.hpp
 
 Iter.hpp:
 
-Iter.tpp:
+Data.hpp:

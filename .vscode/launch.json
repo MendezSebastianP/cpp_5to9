@@ -8,8 +8,8 @@
       "args": [],
       "stopAtEntry": false,
       "externalConsole": false,
-      "cwd": "/home/smendez-/Documents/studgit/CPP2/cpp05/ex00",
-      "program": "/home/smendez-/Documents/studgit/CPP2/cpp05/ex00/build/Debug/outDebug",
+      "cwd": "/home/smendez-/Documents/studgit/CPP2/cpp07/ex01",
+      "program": "/home/smendez-/Documents/studgit/CPP2/cpp07/ex01/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
       "setupCommands": [

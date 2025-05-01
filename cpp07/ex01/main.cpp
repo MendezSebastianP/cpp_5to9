@@ -1,6 +1,7 @@
 # include <iostream>
 # include <cctype>
 # include "Iter.hpp"
+# include "Data.hpp"
 
 void sep( size_t n, std::string msg)
 {
@@ -31,7 +32,7 @@ void    shout(std::string &s)
 
 int main()
 {
-
+	// ints
     int nums[] = { 0, 1, 2, 3, 4 };
     std::cout << "Original ints: ";
     iter(nums, 5, printElem<int>);
@@ -40,7 +41,7 @@ int main()
     iter(nums, 5, printElem<int>);
     std::cout << "\n\n";
 
-
+	// strings
     std::string words[] = { "hello", "world", "iter", "template" };
     std::cout << "Original strings: ";
     iter(words, 4, printElem<std::string>);
@@ -51,6 +52,14 @@ int main()
 
 
 	// class and function member
+	Data *data = new Data();
+	std::cout << "Original strings: ";
+	iter(data->data, data->sizen, data, &Data::printdata<int>);
+	std::cout << "\nAfter times2 class member function: ";
+	iter(data->data, data->sizen, data, &Data::times2);
+	iter(data->data, data->sizen, data, &Data::printdata<int>);
+	std::cout << "\n\n";
 
+	delete data;
     return 0;
 }

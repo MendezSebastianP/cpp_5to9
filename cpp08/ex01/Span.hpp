@@ -8,22 +8,23 @@
 # define N_MAX 10000000
 
 class Span {
-    public:
+	public:
 	// canonic
 	Span( void );
-	Span( std::string Name );
+	Span( int numb );
 	~Span( void );
 	Span( Span const &src);
 	Span & operator =( Span const & rhs);
 
-	void addNumber(int numb );
+	void addNumber( int numb );
 	int shortestSpan( void ) const;
 	int longestSpan( void ) const;
+	void add_range(int min, int max);
 
 	private:
 	std::set<int> span_;
 	bool samenumber;
-
+	int N_max_;
 };
 
 

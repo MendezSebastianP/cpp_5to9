@@ -29,5 +29,6 @@ int	main(void)
 
 	identify(test2);
 	identify(*test2);
+	delete test;
 	return 0;
 }

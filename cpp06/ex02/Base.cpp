@@ -10,7 +10,7 @@
 
 Base::~Base( void )
 {
-	std::cout << DEST_MSG << " for Name: " << std::endl;
+	std::cout << DEST_MSG << std::endl;
 }
 
 Base *generate(void)

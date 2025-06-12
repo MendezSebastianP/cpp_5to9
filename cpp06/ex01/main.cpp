@@ -33,4 +33,8 @@ int	main(void)
 	serialized = Serializer::serialize(original3);
 	deserialized = Serializer::deserialize(serialized);
 	std::cout << std::boolalpha << (original3 == deserialized) << std::endl;
+
+	delete original;
+	delete original2;
+	delete original3;
 }

@@ -9,7 +9,7 @@ TRASH_DIR := .trash
 OBJ       := $(patsubst %.cpp,$(TRASH_DIR)/%.o,$(SRCS))
 DEP       := $(OBJ:.o=.d)
 
-NAME      := ScalarConverter
+NAME      := Base
 
 all: $(NAME)
 

@@ -11,7 +11,7 @@ class Span {
 	public:
 	// canonic
 	Span( void );
-	Span( int numb );
+	Span( unsigned int numb );
 	~Span( void );
 	Span( Span const &src);
 	Span & operator =( Span const & rhs);
@@ -25,6 +25,7 @@ class Span {
 	std::set<int> span_;
 	bool samenumber;
 	int N_max_;
+	unsigned int count_n_;
 };
 
 

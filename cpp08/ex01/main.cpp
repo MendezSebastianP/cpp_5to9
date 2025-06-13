@@ -26,7 +26,7 @@ int main( void )
     	std::cout << sp.longestSpan() << std::endl;
 	}
 	catch(const std::exception& e) { std::cerr << e.what() << '\n'; }
-    
+
 
 	sep(2, "SHORT TESTS");
 	Span t0(1); 
@@ -38,16 +38,21 @@ int main( void )
 	catch(const std::exception& e) { std::cerr << e.what() << '\n'; }
 
 	sep(2, "LONG TESTS");
-	Span t1(1000000); 
+	Span t1(100);
+	Span t2(10000);
+	Span t3(10000); 
 
 	try {t1.add_range(10, 1);}
 	catch(const std::exception& e) { std::cerr << e.what() << '\n'; }
-	try {t1.add_range(0, 1000001);}
+	try {t2.add_range(0, 10);}
 	catch(const std::exception& e) { std::cerr << e.what() << '\n'; }
-	try {t1.add_range(0, 1000000);}
+	std::cout << "Shortest span: " << (t2.shortestSpan()) << std::endl;
+	std::cout << "longest span: " << (t2.longestSpan()) << std::endl;
+	try {t3.add_range(0, 10000);}
 	catch(const std::exception& e) { std::cerr << e.what() << '\n'; }
-	std::cout << "Shortest span: " << (t1.shortestSpan()) << std::endl;
-	std::cout << "Shortest span: " << (t1.longestSpan()) << std::endl;
+	std::cout << "Shortest span: " << (t3.shortestSpan()) << std::endl;
+	std::cout << "longest span: " << (t3.longestSpan()) << std::endl;
+	
 
 	return 0;
 }

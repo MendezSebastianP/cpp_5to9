@@ -8,13 +8,13 @@
 # define DEST_MSG "\033[1;31mDestructor Span called\033[0m"
 
 Span::Span( void )
-	: samenumber(false), N_max_(N_MAX)
+	: samenumber(false), N_max_(N_MAX), count_n_(0)
 {
 	std::cout << CONST_MSG << std::endl;
 }
 
-Span::Span( int numb )
-	: samenumber(false), N_max_(numb)
+Span::Span( unsigned int numb )
+	: samenumber(false), N_max_(numb), count_n_(0)
 {
 	std::cout << CONST_N_MSG << std::endl;
 }
@@ -44,6 +44,7 @@ void Span::addNumber( int numb )
 	if (span_.find(numb) != span_.end())
 		samenumber = true;
 	span_.insert(numb);
+	count_n_++;
 }
 
 int Span::shortestSpan( void ) const
@@ -62,8 +63,10 @@ int Span::shortestSpan( void ) const
 	}
 	if (samenumber)
 		return 0;
-	for (std::set<int>::iterator i = span_.begin(); i != span_.end(); i++)
+	for (std::set<int>::iterator i = span_.begin(); i != span_.end() && (static_cast<const unsigned int>(*i)) < count_n_; i++)
 	{
+		// std::cout << (static_cast<const unsigned int>(*i)) <<" number\n";
+		// std::cout << shortest <<" shortest\n";
 		if (it2 != span_.end())
 		{
 			dif = std::abs(*it2 - *it1);
@@ -75,6 +78,7 @@ int Span::shortestSpan( void ) const
 		std::advance(it1, 1);
 		std::advance(it2, 1);
 	}
+	// std::cout << shortest <<" shortest\n";
 	return shortest;
 }
 
@@ -86,11 +90,9 @@ void Span::add_range(int min, int max)
 		throw std::range_error("\033[1;31mError\033[0m: Not valid range");
 	for (int i = min; i < max; i++)
 	{
-		if (span_.find(i) != span_.end())
-			samenumber = true;
 		span_.insert(i);
+		count_n_++;
 	}
-
 }
 
 int Span::longestSpan( void ) const

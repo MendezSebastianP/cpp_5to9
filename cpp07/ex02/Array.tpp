@@ -1,11 +1,11 @@
 # include <iostream>
 # include <cctype>
 # include "Array.hpp"
-# define CONST_MSG "\033[1;32mDefault constructor ClapTrap called\033[0m"
-# define CONST_N_MSG "\033[1;32mParametizered constructor ClapTrap called, name: \033[0m"
-# define CPY_CONST_MSG "\033[1;32mCopy constructor ClapTrap called\033[0m"
+# define CONST_MSG "\033[1;32mDefault constructor Array called\033[0m"
+# define CONST_N_MSG "\033[1;32mParametizered constructor Array called, name: \033[0m"
+# define CPY_CONST_MSG "\033[1;32mCopy constructor Array called\033[0m"
 # define CPY_ASSIG_OP_MSG "Copy assignment operator called"
-# define DEST_MSG "\033[1;31mDestructor ClapTrap called\033[0m"
+# define DEST_MSG "\033[1;31mDestructor Array called\033[0m"
 
 template<typename T>
 Array<T>::Array( void )

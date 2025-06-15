@@ -19,9 +19,10 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 	BitcoinExchange Bitcoin;
-	if (Bitcoin.Fill_database() || Bitcoin.Fill_input(argv[1]))
+	if (Bitcoin.FillDatabase() || Bitcoin.ShowRate(argv[1]))
+	{
 		return (EXIT_FAILURE);
-	Bitcoin.Print_Map(Bitcoin.input_, " | ");
-
+	}
+	// Bitcoin.Print_Map(Bitcoin.database_, " | ");
 	return (EXIT_SUCCESS);
 }

@@ -19,9 +19,9 @@ BitcoinExchange & BitcoinExchange::operator= (BitcoinExchange const & rhs)
 	return *this;
 }
 
-void BitcoinExchange::Print_Map(std::map<std::string, double> map, std::string sep)
+void BitcoinExchange::Print_Map(std::map<unsigned int, double> map, std::string sep)
 {
-	for ( std::map<std::string, double>::iterator i = map.begin(); i != map.end(); i++)
+	for (std::map<unsigned int, double>::iterator i = map.begin(); i != map.end(); i++)
 	{
 		std::cout << i->first << sep << i->second << std::endl;
 	}
@@ -35,9 +35,33 @@ double to_double(const std::string& s) {
 	return x;
 }
 
-int BitcoinExchange::Fill_database()
+unsigned int BitcoinExchange::DateToInt(std::string str)
+{
+	int year, month, day;
+	double value;
+	char bufy[10], bufm[10], bufd[10], str_value[10];
+
+	// check the lenght and form
+	if (str.length() != 10)
+		return INVALID_INPUT;
+
+	// check the date
+	str.copy(bufy, 4, 0); // extract year
+	bufy[4] = '\0';
+	str.copy(bufm, 2, 5); // extract month
+	bufm[2] = '\0';
+	str.copy(bufd, 2, 8); // extract day
+	bufd[2] = '\0';
+	year = std::atoi(bufy) * 10000;
+	month = std::atoi(bufm) * 100;
+	day = std::atoi(bufd);
+	return (year + month + day);
+}
+
+int BitcoinExchange::FillDatabase()
 {
 	double E_Rate;
+	unsigned int date;
 	std::string Buffer;
 	char col1[20];
 	char col2[20];
@@ -54,17 +78,19 @@ int BitcoinExchange::Fill_database()
 		col1[10] = '\0';
 		Buffer.copy(col2, Buffer.length() - 11, 11); // copying len-11 characters, from after the date
 		col2[Buffer.length() - 11] = '\0';
-		E_Rate = to_double(col2); // transform col2 in int
-		database_.insert(std::pair<std::string, double>(col1, E_Rate));
+		E_Rate = to_double(col2); // transform col2 in double
+		date = DateToInt(col1);
+		database_.insert(std::pair<unsigned int, double>(date, E_Rate));
 	}
 	Bitcoindb.close();
 	return (EXIT_SUCCESS);
 }
 
-int BitcoinExchange::Fill_input( char *input )
+int BitcoinExchange::ShowRate( char *input )
 {
 	int valid_code;
 	double E_Rate;
+	unsigned int date;
 	std::string Buffer;
 	char col1[20];
 	char col2[20];
@@ -80,18 +106,71 @@ int BitcoinExchange::Fill_input( char *input )
 		valid_code = IsValidInput(Buffer);
 		if (valid_code) // enter if invalid input
 		{
-			input_.insert(std::pair<std::string, double>(std::string(1, char('0' + valid_code)), 0));
+			switch (valid_code)
+			{
+			case INVALID_INPUT:
+				std::cout << "Error: bad input => " << Buffer << std::endl;
+				break;
+			
+			case INVALID_DATE:
+				std::cout << "Error: invalid date => " << Buffer << std::endl;
+				break;
+			
+			case TOO_SHORT_N:
+				std::cout << "Error: too small number." << std::endl;
+				break;
+			
+			case TOO_LONG_N:
+				std::cout << "Error: too large number." << std::endl;
+				break;
+
+			default:
+				std::cout << "Error: unknown error error." << std::endl;
+				break;
+			}
 			continue ;
 		}
 		Buffer.copy(col1, 10, 0); // copying 10 characters (date) from the start
 		col1[10] = '\0';
 		Buffer.copy(col2, Buffer.length() - 13, 13); // copying len-13 characters, from after the date
 		col2[Buffer.length() - 13] = '\0';
-		E_Rate = to_double(col2); // transform col2 in int
-		input_.insert(std::pair<std::string, double>(col1, E_Rate));
+		date = DateToInt(col1);
+		E_Rate = to_double(col2); // transform col2 in double
+		if (database_.find(date) != database_.end())
+		{
+			std::cout << col1 << " => " << col2 << " = " << database_.find(date)->second << E_Rate << std::endl;
+		}
+		else
+		{
+			FindClosest(date, E_Rate);
+		}
 	}
 	Bitcoindb.close();
 	return (EXIT_SUCCESS);
+}
+
+void BitcoinExchange::FindClosest(unsigned int date, double E_Rate)
+{
+	std::string datestr;
+
+	while (date >= 0 && database_.find(date) == database_.end())
+	{
+		date--;
+	}
+	if (date != 0)
+	{
+		datestr = to_string_easy(date);
+		std::cout << datestr.substr(0, 4)+"-" <<
+			datestr.substr(4, 2)+"-" <<
+			datestr.substr(6, 2) <<
+			" => " << E_Rate << " = " <<
+			 database_.find(date)->second * E_Rate << std::endl;
+	}
+	else
+	{
+		std::cout << "Error: invalid input." << std::endl;
+	}
+
 }
 
 int BitcoinExchange::IsValidInput(std::string str)
@@ -101,7 +180,7 @@ int BitcoinExchange::IsValidInput(std::string str)
 	char bufy[10], bufm[10], bufd[10], str_value[10];
 
 	// check the lenght and form
-	if (str.length() < 14 || str.length() > 17)
+	if (str.length() < 14 || str.length() > 27)
 		return INVALID_INPUT;
 	else if (str.find(" | ") == std::string::npos)
 		return INVALID_INPUT;
@@ -134,32 +213,32 @@ int BitcoinExchange::IsValidInput(std::string str)
 
 bool BitcoinExchange::IsValidDate(int month, int day, int year)
 {
-    int status=0; 
+    int status = 0; 
 
     if ((month == 1 || month == 3 || month == 5 || month == 7 ||
         month == 8 || month == 10 || month == 12) && ( day>31 || day<1) )
     {
-        status = 3; 
+        status++; 
     }
     else if ((month == 4 || month == 6 || month == 9 || month == 11) && (day>30 || day<1) )
     {
-        status = 4; 
+        status++; 
     }
     else if ((month == 2) && (year % 4 == 0) && (day>29 || day<1))
     {
-        status = 5; 
+        status++; 
     }
     else if ((month == 2) && (year % 4 != 0) && (day>28 || day<1) )
     {
-        status = 6; 
+        status++; 
     }
     else if ((year < 999) || (year > 10000))
     {
-        status = 1;
+        status++;
     }
     if ((month < 1) || (month > 12))
     {
-        status = 2;
+        status++;
     }
     return status;
 }

@@ -1,7 +1,3 @@
-# include <iostream>
-#include <cstdlib>
-# include <cctype>
-# include <limits>
 # include "BitcoinExchange.hpp"
 
 BitcoinExchange::BitcoinExchange( void ) {}

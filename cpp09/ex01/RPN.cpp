@@ -47,11 +47,11 @@ int RPN::FillStack(void)
 		if (!is_number(buffer) && (buffer.length() > 1 || buffer.find_first_of("/*-+") == std::string::npos))
 			return (EXIT_FAILURE);
 		if (buffer.find_first_of("/*-+") != std::string::npos)
-		{
-			if (block_n == 1)
-				return (EXIT_FAILURE);
+		{;
 			n_op++;
 			block_n = 0;
+			if (n_num == 1)
+				return (EXIT_FAILURE);
 		}
 		if (is_number(buffer))
 		{
@@ -127,8 +127,8 @@ void RPN::Operation()
 		stack_.pop();
 		// new function?
 		InvertStack(tmp);
-		b = to_double(tmp.top()); tmp.pop();
 		a = to_double(tmp.top()); tmp.pop();
+		b = to_double(tmp.top()); tmp.pop();
 		switch (op) {
 			case ADD_OP:
 				result = a + b;

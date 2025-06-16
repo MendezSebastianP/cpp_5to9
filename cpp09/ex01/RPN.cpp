@@ -35,6 +35,24 @@ int RPN::GetInput(char *str)
 	return (EXIT_SUCCESS);
 }
 
+void InvertStack(std::stack<std::string> &stack)
+{
+	std::stack<std::string> tmp;
+
+	while (!stack.empty()) {
+		tmp.push(stack.top());
+		stack.pop();
+	}
+	stack = tmp;
+
+}
+void PrintStack(std::stack<std::string> stack) {
+	while (!stack.empty()) {
+		std::cout << stack.top() << std::endl;
+		stack.pop();
+	}
+}
+
 int RPN::FillStack(void)
 {
 	std::istringstream stream(input_);
@@ -66,24 +84,6 @@ int RPN::FillStack(void)
 		return (EXIT_FAILURE);
 	InvertStack(stack_);
 	return (EXIT_SUCCESS);
-}
-
-void InvertStack(std::stack<std::string> &stack)
-{
-    std::stack<std::string> tmp;
-
-    while (!stack.empty()) {
-        tmp.push(stack.top());
-        stack.pop();
-    }
-    stack = tmp;
-}
-
-void PrintStack(std::stack<std::string> stack) {
-    while (!stack.empty()) {
-        std::cout << stack.top() << std::endl;
-        stack.pop();
-    }
 }
 
 int RPN::GetOperator(std::string &str)

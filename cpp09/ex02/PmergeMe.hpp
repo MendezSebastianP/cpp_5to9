@@ -1,5 +1,5 @@
-#ifndef RPN_HPP
-# define RPN_HPP
+#ifndef PMERGEME_HPP
+# define PMERGEME_HPP
 # include <iostream>
 # include <fstream>
 # include <string>
@@ -8,26 +8,21 @@
 # include <stack>
 # include <cstdlib>
 # include <sstream>
-# define ARG_ERR "Please, put only one argument: numbers and operators in one token"
-# define INVALID_OP 0
-# define ADD_OP 1
-# define SUBTRACT_OP 2
-# define MULTIPLY_OP 3
-# define DIVIDE_OP 4
+# define ARG_ERR "Please, give a valid argument: a list of integers without duplicates."
 
 
-class RPN {
+
+class PmergeMe {
 	// canonic
     public:
-	RPN( void );
-	~RPN( void );
-	RPN( RPN const &src );
-	RPN & operator =( RPN const & rhs );
+	PmergeMe( void );
+	~PmergeMe( void );
+	PmergeMe( PmergeMe const &src );
+	PmergeMe & operator =( PmergeMe const & rhs );
 
 	int GetInput( char *str);
 	int FillStack( void );
-	void Operation();
-	int GetOperator( std::string &str);
+
 	
 	private:
 	std::stack<std::string> stack_;

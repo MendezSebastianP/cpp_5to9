@@ -9,7 +9,11 @@ int	main(int argc, char **argv)
 	}
 	RPN rpn;
 	rpn.GetInput(argv[1]);
-	rpn.FillStack();
+	if (rpn.FillStack())
+	{
+		std::cerr << "Error: Invalid input." << std::endl;
+		return (EXIT_FAILURE);
+	}
 	rpn.Operation();
 	PrintStack(rpn.stack_);
 	return (EXIT_SUCCESS);

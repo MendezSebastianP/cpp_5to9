@@ -35,15 +35,37 @@ int RPN::GetInput(char *str)
 	return (EXIT_SUCCESS);
 }
 
-void RPN::FillStack(void)
+int RPN::FillStack(void)
 {
 	std::istringstream stream(input_);
     std::string buffer;
+	int n_num = 0, n_op = 0, block_n = 0;
     while (getline(stream, buffer, ' ')) 
 	{
+		if (buffer[0] == '\0')
+			continue;
+		if (!is_number(buffer) && (buffer.length() > 1 || buffer.find_first_of("/*-+") == std::string::npos))
+			return (EXIT_FAILURE);
+		if (buffer.find_first_of("/*-+") != std::string::npos)
+		{
+			if (block_n == 1)
+				return (EXIT_FAILURE);
+			n_op++;
+			block_n = 0;
+		}
+		if (is_number(buffer))
+		{
+			n_num++;
+			block_n++;
+			if (to_double(buffer) >= 10)
+				return (EXIT_FAILURE);
+		}
         stack_.push(buffer);
     }
+	if (n_num - 1 != n_op || block_n != 0)
+		return (EXIT_FAILURE);
 	InvertStack(stack_);
+	return (EXIT_SUCCESS);
 }
 
 void InvertStack(std::stack<std::string> &stack)
@@ -91,7 +113,7 @@ void RPN::Operation()
 	int op;
 	int i = 0;
 
-	while (i != 3)
+	while (stack_.size() > 2)
 	{
 		while(!stack_.empty() && is_number(stack_.top()))
 		{

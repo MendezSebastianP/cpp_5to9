@@ -25,7 +25,7 @@ class RPN {
 	RPN & operator =( RPN const & rhs );
 
 	int GetInput( char *str);
-	void FillStack( void );
+	int FillStack( void );
 	void Operation();
 	int GetOperator( std::string &str);
 	std::stack<std::string> stack_;

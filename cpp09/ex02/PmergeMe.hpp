@@ -41,6 +41,10 @@ std::string to_string_easy(T value) {
     std::ostringstream oss;
     oss << value;
     return oss.str();
+
+// subject functions
+
+int nmax(int n);
 }
 
 #endif

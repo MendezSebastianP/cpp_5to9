@@ -47,6 +47,16 @@ void PrintStack(std::stack<std::string> stack) {
 	}
 }
 
+int nmax(int n)
+{
+    int sum = 0;
+    for (int k = 1; k <= n; ++k) {
+        double value = (3.0 / 4.0) * k;
+        sum += static_cast<int>(ceil(log2(value)));
+    }
+    return sum;
+}
+
 int PmergeMe::GetInput(char *str)
 {
 	input_= str;

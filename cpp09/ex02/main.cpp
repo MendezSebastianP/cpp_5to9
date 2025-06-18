@@ -9,12 +9,17 @@ int	main(int argc, char **argv)
 	}
 	PmergeMe PmergeMe;
 	PmergeMe.GetInput(argv[1]);
-	if (PmergeMe.FillStack())
+	if (PmergeMe.FillVector())
 	{
-		std::cerr << "Error: Invalid input." << std::endl;
+		std::cerr << ARG_ERR << std::endl;
 		return (EXIT_FAILURE);
 	}
-	PmergeMe.Operation();
-	PrintStack(PmergeMe.stack_);
+	PrintVector(PmergeMe.vector_);
+	while (PmergeMe.DividePairsRest())
+	{
+		PrintVector(PmergeMe.vector_);
+	}
+	PmergeMe.JacobstalSec();
+	PrintVector(PmergeMe.jacob_);
 	return (EXIT_SUCCESS);
 }

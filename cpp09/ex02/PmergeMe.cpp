@@ -1,6 +1,6 @@
 # include "PmergeMe.hpp"
 
-PmergeMe::PmergeMe( void ) {}
+PmergeMe::PmergeMe( void ) : level_(1) {}
 
 PmergeMe::~PmergeMe( void ) {}
 
@@ -29,22 +29,22 @@ double to_double(const std::string &str)
 	return x;
 }
 
-void InvertStack(std::stack<std::string> &stack)
+int to_int(const std::string &str) 
 {
-	std::stack<std::string> tmp;
-	
-	while (!stack.empty()) {
-		tmp.push(stack.top());
-		stack.pop();
-	}
-	stack = tmp;
-	
+	char* end;
+	errno = 0;
+	int x = std::atoi(str.c_str());
+	return x;
 }
-void PrintStack(std::stack<std::string> stack) {
-	while (!stack.empty()) {
-		std::cout << stack.top() << std::endl;
-		stack.pop();
-	}
+
+void PrintVector(std::vector<int> vector) 
+{
+    for (size_t i = 0; i < vector.size(); ++i) {
+        std::cout << vector[i];
+        if (i + 1 < vector.size())
+            std::cout << ' ';
+    }
+    std::cout << '\n';
 }
 
 int nmax(int n)
@@ -63,6 +63,88 @@ int PmergeMe::GetInput(char *str)
 	return (EXIT_SUCCESS);
 }
 
+int PmergeMe::FillVector(void)
+{
+	std::istringstream stream(input_);
+    std::string buffer;
+	int num = 0;
+    while (getline(stream, buffer, ' ')) 
+	{
+		if (buffer[0] == '\0')
+			continue;
+		if (!is_number(buffer))
+			return (EXIT_FAILURE);
+		num = to_int(buffer);
+        for (size_t i = 0; i < vector_.size(); ++i)
+        {
+            if (vector_[i] == num)
+				return (EXIT_FAILURE);
+        }
+		vector_.insert(vector_.end(), num);
+    }
+	return (EXIT_SUCCESS);
+}
+
+bool PmergeMe::DividePairsFirst()
+{
+	int i = 0, sep = 0;
+	const int n = vector_.size();
+
+	if (n < (int)(pow(2, level_ + 1)))
+		return (true);
+	sep = 1;
+	while (i + 1 < n)
+	{
+		std::cout << "sep " << sep << " i: " << i << " vector compares " << i <<"|" <<(i+sep) <<  std::endl;
+		if (vector_[(i)] > vector_[(i + sep)])
+			std::swap(vector_[(i)], vector_[(i + sep)]);
+		i += 2;
+	}
+	level_++;
+	return (false);
+}
+
+bool PmergeMe::DividePairsRest()
+{
+	int i, sep, block;
+	const int n = vector_.size();
+
+	if (n < (int)(pow(2, level_ + 1)))
+		return (false);
+	sep = (int)(pow(2, level_ - 1));
+	i = sep - 1;
+	while (i + sep < n)
+	{
+		block = 0;
+		std::cout << "sep " << sep << " i: " << i << " vector compares " << i <<"|" <<(i+sep) <<  std::endl;
+		if (vector_[(i)] > vector_[(i + sep)])
+		{
+			while (block < sep)
+			{
+				std::swap(vector_[(i - block)], vector_[(i + sep - block)]);
+				block++;
+			}
+		}
+		i += (sep * 2);
+	}
+	level_++;
+	return (true);
+}
+
+void PmergeMe::JacobstalSec(void)
+{
+	int n = 0, size = vector_.size();
+
+	jacob_.insert(jacob_.end(), 0);
+	jacob_.insert(jacob_.end(), 1);
+
+	std::cout << jacob_.max_size() << std::endl;
+	while (jacob_.end()[-1] < size)
+	{
+		jacob_.insert(jacob_.end(), jacob_[n + 1] + (2 * jacob_[n]));
+		n++;
+	}
+}
 
 
 

@@ -5,9 +5,11 @@
 # include <string>
 # include <string.h> 
 # include <cctype>
-# include <stack>
+# include <vector>
+# include <deque>
 # include <cstdlib>
 # include <sstream>
+# include <cmath>
 # define ARG_ERR "Please, give a valid argument: a list of integers without duplicates."
 
 
@@ -21,19 +23,24 @@ class PmergeMe {
 	PmergeMe & operator =( PmergeMe const & rhs );
 
 	int GetInput( char *str);
-	int FillStack( void );
+	int FillVector( void );
+	bool DividePairsFirst( void );
+	bool DividePairsRest( void );
+	void JacobstalSec(void);
 
 	
+	std::vector<int> vector_;
+	std::vector<int> jacob_;
 	private:
-	std::stack<std::string> stack_;
 	std::string input_;
+	int level_;
 };
 
 // helpful functions/templates
 
-void PrintStack(std::stack<std::string> stack);
-void InvertStack( std::stack<std::string> &stack);
+void PrintVector(std::vector<int> vector);
 double to_double(const std::string &str);
+int to_int(const std::string &str);
 bool is_number(const std::string& s);
 
 template <typename T>
@@ -41,10 +48,10 @@ std::string to_string_easy(T value) {
     std::ostringstream oss;
     oss << value;
     return oss.str();
+}
 
 // subject functions
 
 int nmax(int n);
-}
 
 #endif

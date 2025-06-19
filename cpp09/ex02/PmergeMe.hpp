@@ -32,10 +32,10 @@ class PmergeMe {
 	void SwapBlocks(int a, int b);
 
 	// swap functions
+	void JacobsthalSec(void);
 	bool DividePairsFirst( void );
 	bool DividePairsRest( void );
-	void JacobsthalSec(void);
-
+	bool Insertion( void );
 	
 	std::vector< std::vector<int> > vector_;
 	std::vector<int> jacob_;

@@ -180,5 +180,19 @@ void PmergeMe::JacobsthalSec(void)
 	}
 }
 
+bool PmergeMe::Insertion(void)
+{
+	int i, sep, n, block;
+
+	sep = static_cast<int>(pow(2, level_ - 1));
+	n = vector_[0].size();
+	if(n < sep * 3)
+	{
+		level_--;
+		std::cout << "\nInsertion not possible\n";
+		return (true);
+	}
+	;
+}
 
 

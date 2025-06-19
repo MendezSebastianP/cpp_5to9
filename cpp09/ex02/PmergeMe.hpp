@@ -10,6 +10,7 @@
 # include <cstdlib>
 # include <sstream>
 # include <cmath>
+# include <algorithm>
 # define ARG_ERR "Please, give a valid argument: a list of integers without duplicates."
 
 
@@ -22,14 +23,21 @@ class PmergeMe {
 	PmergeMe( PmergeMe const &src );
 	PmergeMe & operator =( PmergeMe const & rhs );
 
+	// init
 	int GetInput( char *str);
 	int FillVector( void );
+
+	// utils
+	void FillBlocks();
+	void SwapBlocks(int a, int b);
+
+	// swap functions
 	bool DividePairsFirst( void );
 	bool DividePairsRest( void );
-	void JacobstalSec(void);
+	void JacobsthalSec(void);
 
 	
-	std::vector<int> vector_;
+	std::vector< std::vector<int> > vector_;
 	std::vector<int> jacob_;
 	private:
 	std::string input_;

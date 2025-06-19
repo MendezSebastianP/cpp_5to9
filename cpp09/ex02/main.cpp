@@ -14,12 +14,12 @@ int	main(int argc, char **argv)
 		std::cerr << ARG_ERR << std::endl;
 		return (EXIT_FAILURE);
 	}
-	PrintVector(PmergeMe.vector_);
+	PrintVector(PmergeMe.vector_[0]);
 	while (PmergeMe.DividePairsRest())
 	{
-		PrintVector(PmergeMe.vector_);
+		PrintVector(PmergeMe.vector_[0]);
 	}
-	PmergeMe.JacobstalSec();
+	PmergeMe.JacobsthalSec();
 	PrintVector(PmergeMe.jacob_);
 	return (EXIT_SUCCESS);
 }

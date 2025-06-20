@@ -21,5 +21,6 @@ int	main(int argc, char **argv)
 	}
 	PmergeMe.JacobsthalSec();
 	PrintVector(PmergeMe.jacob_);
+	PmergeMe.Insertion();
 	return (EXIT_SUCCESS);
 }

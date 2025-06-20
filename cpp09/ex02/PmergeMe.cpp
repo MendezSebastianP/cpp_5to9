@@ -143,7 +143,7 @@ void PmergeMe::SwapBlocks(int a, int b)
 
 bool PmergeMe::DividePairsRest()
 {
-	int i, sep, block;
+	int i, sep;
 	const int n = vector_[0].size();
 
 	if (n < (int)(pow(2, level_ + 1)))
@@ -153,7 +153,6 @@ bool PmergeMe::DividePairsRest()
 	FillBlocks();
 	while (i + sep < n)
 	{
-		block = 0;
 		std::cout << "sep " << sep << " i: " << i << " vector compares " << i <<"|" <<(i+sep) <<  std::endl;
 		if (vector_[0][(i)] > vector_[0][(i + sep)])
 		{
@@ -180,9 +179,29 @@ void PmergeMe::JacobsthalSec(void)
 	}
 }
 
+void PmergeMe::FillMainPend()
+{
+	int sep, n;
+	
+	sep = static_cast<int>(pow(2, level_ - 1));
+	n = vector_[0].size();
+	for (size_t i = 0; i < n; i++)
+	{
+		if (vector_[1][i] % 2 == 0 && vector_[1][i] != 0)
+			vector_[2][i] = 1;
+		else
+			vector_[2][i] = 0;
+	}
+	for (size_t i = n; i %% sep == 0; i--)
+	{
+		vector_[2][i] = 2;
+	}
+	
+}
+
 bool PmergeMe::Insertion(void)
 {
-	int i, sep, n, block;
+	int i, j, sep, n, block, j_number, index_pend, lib;
 
 	sep = static_cast<int>(pow(2, level_ - 1));
 	n = vector_[0].size();
@@ -192,7 +211,52 @@ bool PmergeMe::Insertion(void)
 		std::cout << "\nInsertion not possible\n";
 		return (true);
 	}
-	;
+	FillBlocks();
+	FillMainPend();
+	j = 3; // index 3 is the jacobsthal 3 number, the first used in the sequence
+
+	// as our blocks are numbers from 0 to n, b1, b2, etc are our even numbers
+	// so if we want to use the jacobstal numbers as j_3 -> b3, b3 would have
+	// and index of 4, as 0 = b1, 1 = a1, 2 = b2, 3 = a2, 4 = b4.  We will find the
+	// right index with: (j_number - 1) * 2. So we use the j_number to find the
+	// rioight index.
+
+	// 1.	loop for set j_number (find the last index block (LIB) if b3 and then b2)
+	// 1.1	for each iteration find the (LIB) from the numbers to search:
+	//		until bound element. if b3, until a3, if b2 until b2. taking into account
+	//		the  !! prevoius swaps !!.
+	// 2.	do the binary search between these numbers
+	// 3.	swap them
+	// 4.	change pend numbers in vector_[2]
+	// 5.	increment all the numbers in order to be consistent
+
+	
+	j_number = (jacob_[j] - 1) * 2;
+	index_pend = ((std::upper_bound(vector_[1].begin(), vector_[1].end(), j_number)) - vector_[1].begin()) - 1;
+	while(j_number <= 0)
+	{
+		lib = ((std::upper_bound(vector_[1].begin(), vector_[1].end(), j_number + 1)) - vector_[1].begin()) - 1;
+
+
+		j_number -= 2; // we go through the even numbers, as b3- > b2
+	}
+
+	return (true);
+}
+
+void PmergeMe::FillLibn(int j_number)
+{
+	int lib, bound;
+
+	for (size_t i = 0; i < vector; i++)
+	{
+		if (vector_[1].ma)
+		lib = ((std::upper_bound(vector_[1].begin(), vector_[1].end(), j_number - 1)) - vector_[1].begin()) - 1;
+		if (vector[2][lib] == 0)
+			break;
+		else
+			j_number--;
+	}
 }
 
 

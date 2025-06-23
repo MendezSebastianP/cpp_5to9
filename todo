@@ -1,2 +1,4 @@
 1. fix the cpp09 ex01 problem: the operations should start at the next operator
 2. verify everything by someone before correction
+3. we have te right number list to insert in the main. We have to choose the right one
+	with binary search, and swap. The loop must keep working.

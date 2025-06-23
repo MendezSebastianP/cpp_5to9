@@ -21,6 +21,14 @@ int	main(int argc, char **argv)
 	}
 	PmergeMe.JacobsthalSec();
 	PrintVector(PmergeMe.jacob_);
-	PmergeMe.Insertion();
+	std::cout << "Before \n\n";
+	PrintVector(PmergeMe.vector_[0]);
+	PrintVector(PmergeMe.vector_[1]);
+	PrintVector(PmergeMe.vector_[2]);
+	std::cout << "After \n\n";
+	while (PmergeMe.Insertion())
+	{
+		PrintVector(PmergeMe.vector_[0]);
+	}
 	return (EXIT_SUCCESS);
 }

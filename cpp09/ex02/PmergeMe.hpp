@@ -36,12 +36,13 @@ class PmergeMe {
 	bool DividePairsFirst( void );
 	bool DividePairsRest( void );
 	bool Insertion( void );
+	void BlockInsertion( int index_main, int index_pend, int sep );
 	void FillMainPend();
 	void FillLibn( int lib );
 	
 	std::vector< std::vector<int> > vector_;
 	std::vector<int> jacob_;
-	std::vector<int> lib_n_;
+	std::vector< std::vector<int> > lib_n_;
 	private:
 	std::string input_;
 	int level_;

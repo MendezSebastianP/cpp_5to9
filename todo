@@ -1,4 +1,7 @@
-1. fix the cpp09 ex01 problem: the operations should start at the next operator
-2. verify everything by someone before correction
-3. we have te right number list to insert in the main. We have to choose the right one
-	with binary search, and swap. The loop must keep working.
+1.	fix the cpp09 ex01 problem: the operations should start at the next operator
+2.	verify everything by someone before correction
+3.	fix the FillLibn function, taking in account, the level, the j_number, and if 
+	there is numbers left in the pend.
+4.	Fix the second while loop in insert, in order to be able to identify the levels
+	and j_number. It should enter only twice in j_number 3, 2 times in j_number 5,
+	and it should be able to recognize if there is still numbers left in the pend

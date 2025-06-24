@@ -240,24 +240,28 @@ bool PmergeMe::Insertion(void)
 	// 4.	change pend numbers in vector_[2]
 	// 5.	increment all the numbers in order to be consistent
 
-	
-	j_number = (jacob_[j] - 1) * 2;
-	while(j_number > 0)
+	while (j == 3 || (level_ == 2 && j < 5) )
 	{
-		// index_pend = ((std::upper_bound(vector_[1].begin(), vector_[1].end(), j_number)) - vector_[1].begin()) - 1;
-		index_pend = ((std::find(vector_[1].begin(), vector_[1].end(), j_number)) - vector_[1].begin()) - 1 + sep;
-		FillLibn(j_number);
-		lib = (std::upper_bound(lib_n_[0].begin(), lib_n_[0].end(), vector_[0][index_pend])) - lib_n_[0].begin();
-		if (lib > 0) --lib;
-		std::cout << "Level: " << level_ << ". lib index: " << lib << ". lib number: " << lib_n_[0][lib] << 
-			". index_pend: " << index_pend << ". From: " << vector_[0][index_pend] << std::endl;
-		lib = lib_n_[1][lib];
-		std::cout << "lib index in vector:" << lib << "\n";
-		BlockInsertion(lib, index_pend, sep);
-		PrintVector(vector_[0]);
-		PrintVector(vector_[1]);
-		PrintVector(vector_[2]);
-		j_number -= 2; // we go through the even numbers, as b3- > b2
+		j_number = (jacob_[j] - 1) * 2;
+		while(j_number > 0)
+		{
+			// index_pend = ((std::upper_bound(vector_[1].begin(), vector_[1].end(), j_number)) - vector_[1].begin()) - 1;
+			std::cout << "jacob:" << jacob_[j] << ". j_number: " << j_number << std::endl;
+			index_pend = ((std::find(vector_[1].begin(), vector_[1].end(), j_number)) - vector_[1].begin()) - 1 + sep;
+			FillLibn(j_number);
+			lib = (std::upper_bound(lib_n_[0].begin(), lib_n_[0].end(), vector_[0][index_pend])) - lib_n_[0].begin();
+			if (lib > 0) --lib;
+			std::cout << "Level: " << level_ << ". lib index: " << lib << ". lib number: " << lib_n_[0][lib] << 
+				". index_pend: " << index_pend << ". From: " << vector_[0][index_pend] << std::endl;
+			lib = lib_n_[1][lib];
+			std::cout << "lib index in vector:" << lib << "\n";
+			BlockInsertion(lib, index_pend, sep);
+			PrintVector(vector_[0]);
+			PrintVector(vector_[1]);
+			PrintVector(vector_[2]);
+			j_number -= 2; // we go through the even numbers, as b3- > b2
+		}
+		j++;
 	}
 	level_--;
 	if (level_ == 1)
@@ -283,13 +287,13 @@ void PmergeMe::BlockInsertion(int index_main, int index_pend, int sep)
 		{
 			vector_[0].insert(vector_[0].begin() + i, v_tmp[0]);
 			vector_[1].insert(vector_[1].begin() + i, v_tmp[1]);
-			vector_[2].insert(vector_[2].begin() + i, v_tmp[2]);
+			vector_[2].insert(vector_[2].begin() + i, 0);
 		}
 		else
 		{
 			vector_[0].insert(vector_[0].begin() + (index_main + 1 + i), v_tmp[0]);
 			vector_[1].insert(vector_[1].begin() + (index_main + 1 + i), v_tmp[1]);
-			vector_[2].insert(vector_[2].begin() + (index_main + 1 + i), v_tmp[2]);
+			vector_[2].insert(vector_[2].begin() + (index_main + 1 + i), 0);
 		}
 	}
 }
@@ -303,7 +307,11 @@ void PmergeMe::FillLibn(int j_number)
 	lib_n_[0].clear();
 	lib_n_[1].clear();
 	lib = ((std::upper_bound(vector_[1].begin(), vector_[1].end(), j_number - 1)) - vector_[1].begin()) - 1;
-	// std::cout << "FillLibn test, lib: " << lib << ". Sep: " << sep << std::endl;
+	std::cout << "\n\nFILL TEST ##################\n";
+	PrintVector(vector_[0]);
+	PrintVector(vector_[1]);
+	PrintVector(vector_[2]);
+	std::cout << "FillLibn test, lib: " << vector_[0][lib] << ". Sep: " << sep << std::endl;
 	for (int i = lib; i > 0; i -= sep)
 	{
 		std::cout << "FillLibn test, i: " << i << ". Number: " << vector_[0][i] << ". j_number: " << j_number << std::endl;

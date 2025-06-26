@@ -57,7 +57,8 @@ int RPN::FillStack(void)
 {
 	std::istringstream stream(input_);
     std::string buffer;
-	int n_num = 0, n_op = 0, block_n = 0;
+	int tmp, op, n_num = 0, n_op = 0, block_n = 0;
+	double a, b, result;
     while (getline(stream, buffer, ' ')) 
 	{
 		if (buffer[0] == '\0')
@@ -65,11 +66,37 @@ int RPN::FillStack(void)
 		if (!is_number(buffer) && (buffer.length() > 1 || buffer.find_first_of("/*-+") == std::string::npos))
 			return (EXIT_FAILURE);
 		if (buffer.find_first_of("/*-+") != std::string::npos)
-		{;
+		{
 			n_op++;
 			block_n = 0;
 			if (n_num == 1)
 				return (EXIT_FAILURE);
+			a = to_double(stack_.top()); stack_.pop();
+			b = to_double(stack_.top()); stack_.pop();
+			op = GetOperator(buffer);
+			switch (op) 
+			{
+				case ADD_OP:
+					result = a + b;
+					break;
+
+				case SUBTRACT_OP:
+					result = b - a;
+					break;
+
+				case MULTIPLY_OP:
+					result = a * b;
+					break;
+
+				case DIVIDE_OP:
+					if (b == 0) {return (EXIT_FAILURE);}
+					result = b / a;
+					break;
+
+				default:
+					return (EXIT_FAILURE);
+			}
+	        stack_.push(to_string_easy(result));
 		}
 		if (is_number(buffer))
 		{
@@ -77,12 +104,11 @@ int RPN::FillStack(void)
 			block_n++;
 			if (to_double(buffer) >= 10)
 				return (EXIT_FAILURE);
+			stack_.push(buffer);
 		}
-        stack_.push(buffer);
     }
 	if (n_num - 1 != n_op || block_n != 0)
 		return (EXIT_FAILURE);
-	InvertStack(stack_);
 	return (EXIT_SUCCESS);
 }
 
@@ -104,62 +130,6 @@ int RPN::GetOperator(std::string &str)
         default: 
 			return INVALID_OP;
     }
-}
-
-void RPN::Operation()
-{
-	std::stack<std::string> tmp;
-	double a, b, result;
-	int op;
-	int i = 0;
-
-	while (stack_.size() > 2)
-	{
-		while(!stack_.empty() && is_number(stack_.top()))
-		{
-			// std::cout << stack_.top() << std::endl;
-			tmp.push(stack_.top());
-			stack_.pop();
-		};
-		op = GetOperator(stack_.top());
-		if (op == 0)
-			break;
-		stack_.pop();
-		// new function?
-		InvertStack(tmp);
-		a = to_double(tmp.top()); tmp.pop();
-		b = to_double(tmp.top()); tmp.pop();
-		switch (op) {
-			case ADD_OP:
-				result = a + b;
-				break;
-
-			case SUBTRACT_OP:
-				result = a - b;
-				break;
-
-			case MULTIPLY_OP:
-				result = a * b;
-				break;
-
-			case DIVIDE_OP:
-				if (b == 0) {return;}
-				result = a / b;
-				break;
-
-			default:
-				return;
-		}
-		tmp.push(to_string_easy(result));
-		InvertStack(tmp);
-		// 
-		while(!tmp.empty() && is_number(tmp.top()))
-		{
-			stack_.push(tmp.top());
-			tmp.pop();
-		}
-		i++;
-	}
 }
 
 

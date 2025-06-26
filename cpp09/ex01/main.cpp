@@ -14,7 +14,6 @@ int	main(int argc, char **argv)
 		std::cerr << "Error: Invalid input." << std::endl;
 		return (EXIT_FAILURE);
 	}
-	rpn.Operation();
 	PrintStack(rpn.stack_);
 	return (EXIT_SUCCESS);
 }

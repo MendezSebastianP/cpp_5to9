@@ -29,8 +29,8 @@ class RPN {
 	void Operation();
 	int GetOperator( std::string &str);
 	
-	private:
 	std::stack<std::string> stack_;
+	private:
 	std::string input_;
 };
 

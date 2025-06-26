@@ -150,8 +150,11 @@ bool PmergeMe::DividePairsRest()
 	int i, sep;
 	const int n = vector_[0].size();
 
-	if (n < (int)(pow(2, level_ + 1)))
+	if (n < (int)(pow(2, level_)))
+	{
+		std::cout << "n: " << n << ". pow op: " << (int)(pow(2, level_ + 1)) << std::endl;
 		return (false);
+	}
 	sep = static_cast<int>(pow(2, level_ - 1));
 	i = sep - 1;
 	FillBlocks();

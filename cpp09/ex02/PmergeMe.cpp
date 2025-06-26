@@ -258,6 +258,11 @@ bool PmergeMe::Insertion(void)
 				index_pend = ((std::upper_bound(vector_[2].begin(), vector_[2].end(), 1)) - vector_[2].begin()) - 1;
 				std::cout << "limit 1\n";
 			}
+			if (vector_[2][index_pend] != 1)
+			{
+				index_pend = ((std::find(vector_[2].begin(), vector_[2].end(), 1))) - vector_[2].begin() + sep - 1;
+				std::cout << "limit 1.1\n";
+			}
 			FillLibn(j_number);
 			lib = (std::upper_bound(lib_n_[0].begin(), lib_n_[0].end(), vector_[0][index_pend])) - lib_n_[0].begin();
 			if (lib > 0) --lib;
@@ -292,32 +297,40 @@ void PmergeMe::BlockInsertion(int index_main, int index_pend, int sep)
     vector_[0].erase(vector_[0].begin() + start, vector_[0].begin() + start + sep);
     vector_[1].erase(vector_[1].begin() + start, vector_[1].begin() + start + sep);
     vector_[2].erase(vector_[2].begin() + start, vector_[2].begin() + start + sep);
+	std::cout << "main " << vector_[0][index_main] << ". pend " << tmp0[sep - 1] << std::endl;
+	std::cout << "main index " << index_main << ". pend index " << index_pend << std::endl;
 
-    if (index_main < sep && sep == 1 && vector_[0][index_main] < tmp0[0]) {
-        std::cout << "main " << vector_[0][index_main] << ". pend " << tmp0[0] << std::endl;
-        std::cout << "main index " << index_main << ". pend index " << index_pend << std::endl;
-        vector_[0].insert(vector_[0].begin() + 1, tmp0.begin(), tmp0.end());
-        vector_[1].insert(vector_[1].begin() + 1, tmp1.begin(), tmp1.end());
+    if (index_main < sep && sep == 1 && vector_[0][index_main] < tmp0[sep - 1]) {
+		vector_[0].insert(vector_[0].begin() + 1, tmp0.begin(), tmp0.end());
+        // vector_[1].insert(vector_[1].begin() + 1, tmp1.begin(), tmp1.end());
+
+        vector_[1].insert(vector_[1].begin() + 1, sep, 0);
         vector_[2].insert(vector_[2].begin() + 1, sep, 0);
-        std::cout << "here3\n";
+		std::cout << "here3\n";
     }
-    else if (index_main < sep && vector_[0][index_main] < tmp0[0]) {
+    else if (index_main < sep && vector_[0][index_main] < tmp0[sep - 1]) {
         vector_[0].insert(vector_[0].begin() + sep, tmp0.begin(), tmp0.end());
-        vector_[1].insert(vector_[1].begin() + sep, tmp1.begin(), tmp1.end());
+        // vector_[1].insert(vector_[1].begin() + sep, tmp1.begin(), tmp1.end());
+
+        vector_[1].insert(vector_[1].begin() + sep, sep, 0);
         vector_[2].insert(vector_[2].begin() + sep, sep, 0);
-        std::cout << "here4\n";
+		std::cout << "here4\n";
     }
     else if (index_main < sep) {
         vector_[0].insert(vector_[0].begin(), tmp0.begin(), tmp0.end());
-        vector_[1].insert(vector_[1].begin(), tmp1.begin(), tmp1.end());
+        // vector_[1].insert(vector_[1].begin(), tmp1.begin(), tmp1.end());
+
+        vector_[1].insert(vector_[1].begin(), sep, 0);
         vector_[2].insert(vector_[2].begin(), sep, 0);
-        std::cout << "here1\n";
+		std::cout << "here1\n";
     }
     else {
         vector_[0].insert(vector_[0].begin() + (index_main + 1), tmp0.begin(), tmp0.end());
-        vector_[1].insert(vector_[1].begin() + (index_main + 1), tmp1.begin(), tmp1.end());
+        // vector_[1].insert(vector_[1].begin() + (index_main + 1), tmp1.begin(), tmp1.end());
+
+        vector_[1].insert(vector_[1].begin() + (index_main + 1), sep, 0);
         vector_[2].insert(vector_[2].begin() + (index_main + 1), sep, 0);
-        std::cout << "here2\n";
+		std::cout << "here2\n";
     }
 }
 

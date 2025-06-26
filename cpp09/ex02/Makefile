@@ -36,3 +36,5 @@ dev: FLAGS    := $(CXXFLAGS) $(DEPFLAGS)
 dev: re
 
 .PHONY: all clean fclean re dev
+
+# ./PmergeMe "$(shuf -i 0-26 -n 27 | xargs)" > results.txt

@@ -283,56 +283,95 @@ bool PmergeMe::Insertion(void)
 		return (true);
 }
 
-
-// 
-
 void PmergeMe::BlockInsertion(int index_main, int index_pend, int sep)
 {
-    // 1) Compute where the block starts
-    int first = index_pend - sep + 1;
+    int start = index_pend - (sep - 1);
+    std::vector<int> tmp0, tmp1;
+    tmp0.insert(tmp0.end(), vector_[0].begin() + start, vector_[0].begin() + start + sep);
+    tmp1.insert(tmp1.end(), vector_[1].begin() + start, vector_[1].begin() + start + sep);
+    vector_[0].erase(vector_[0].begin() + start, vector_[0].begin() + start + sep);
+    vector_[1].erase(vector_[1].begin() + start, vector_[1].begin() + start + sep);
+    vector_[2].erase(vector_[2].begin() + start, vector_[2].begin() + start + sep);
 
-    // 2) Steal the blocks into temps
-    std::vector<int> v_tmp0(vector_[0].begin() + first,
-                             vector_[0].begin() + first + sep);
-    std::vector<int> v_tmp1(vector_[1].begin() + first,
-                             vector_[1].begin() + first + sep);
-    std::vector<int> v_tmp2(vector_[2].begin() + first,
-                             vector_[2].begin() + first + sep);
-
-    // 3) Erase that entire range from each original
-    vector_[0].erase(vector_[0].begin() + first,
-                     vector_[0].begin() + first + sep);
-    vector_[1].erase(vector_[1].begin() + first,
-                     vector_[1].begin() + first + sep);
-    vector_[2].erase(vector_[2].begin() + first,
-                     vector_[2].begin() + first + sep);
-
-    // 4) Decide where to insert the whole block back
-    int pos;
-    if (index_main < sep) {
-        if (sep == 1 && vector_[0][index_main] < v_tmp0[0]) {
-            pos = 1;
-        }
-        else if (vector_[0][index_main] < v_tmp0[0]) {
-            pos = sep;
-        }
-        else {
-            pos = 0;
-        }
+    if (index_main < sep && sep == 1 && vector_[0][index_main] < tmp0[0]) {
+        std::cout << "main " << vector_[0][index_main] << ". pend " << tmp0[0] << std::endl;
+        std::cout << "main index " << index_main << ". pend index " << index_pend << std::endl;
+        vector_[0].insert(vector_[0].begin() + 1, tmp0.begin(), tmp0.end());
+        vector_[1].insert(vector_[1].begin() + 1, tmp1.begin(), tmp1.end());
+        vector_[2].insert(vector_[2].begin() + 1, sep, 0);
+        std::cout << "here3\n";
+    }
+    else if (index_main < sep && vector_[0][index_main] < tmp0[0]) {
+        vector_[0].insert(vector_[0].begin() + sep, tmp0.begin(), tmp0.end());
+        vector_[1].insert(vector_[1].begin() + sep, tmp1.begin(), tmp1.end());
+        vector_[2].insert(vector_[2].begin() + sep, sep, 0);
+        std::cout << "here4\n";
+    }
+    else if (index_main < sep) {
+        vector_[0].insert(vector_[0].begin(), tmp0.begin(), tmp0.end());
+        vector_[1].insert(vector_[1].begin(), tmp1.begin(), tmp1.end());
+        vector_[2].insert(vector_[2].begin(), sep, 0);
+        std::cout << "here1\n";
     }
     else {
-        pos = index_main + 1;
+        vector_[0].insert(vector_[0].begin() + (index_main + 1), tmp0.begin(), tmp0.end());
+        vector_[1].insert(vector_[1].begin() + (index_main + 1), tmp1.begin(), tmp1.end());
+        vector_[2].insert(vector_[2].begin() + (index_main + 1), sep, 0);
+        std::cout << "here2\n";
     }
-
-    // 5) Do the bulk‐inserts in one shot per vector:
-    vector_[0].insert(vector_[0].begin() + pos,
-                      v_tmp0.begin(), v_tmp0.end());
-    vector_[1].insert(vector_[1].begin() + pos,
-                      v_tmp1.begin(), v_tmp1.end());
-    // for the pend‐flags we re‐insert 'sep' zeros:
-    vector_[2].insert(vector_[2].begin() + pos,
-                      sep, 0);
 }
+
+
+
+
+// void PmergeMe::BlockInsertion(int index_main, int index_pend, int sep)
+// {
+// 	std::vector<int> v_tmp0;
+// 	std::vector<int> v_tmp1;
+// 	std::vector<int> v_tmp2;
+	
+// 	for (int i = 0; i < sep; i++)
+// 	{
+// 		v_tmp0.insert(v_tmp.end(), vector_[0][index_pend - (sep - 1) + i]);
+// 		v_tmp1.insert(v_tmp.end(), vector_[1][index_pend - (sep - 1) + i]);
+// 		v_tmp2.insert(v_tmp.end(), vector_[2][index_pend - (sep - 1) + i]);
+// 		vector_[0].erase(vector_[0].begin() + (index_pend - (sep - 1) + i));
+// 		vector_[1].erase(vector_[1].begin() + (index_pend - (sep - 1) + i));
+// 		vector_[2].erase(vector_[2].begin() + (index_pend - (sep - 1) + i));
+// 	}
+
+// 	if(index_main < sep && sep == 1 && vector_[0][index_main] < v_tmp[0])
+// 	{
+// 		std::cout << "main " << vector_[0][index_main] << ". pend " << v_tmp[0] << std::endl;
+// 		std::cout << "main index " << index_main << ". pend index " << index_pend << std::endl;
+
+// 		vector_[0].insert(vector_[0].begin() + 1, v_tmp[0]);
+// 		vector_[1].insert(vector_[1].begin() + 1, v_tmp[1]);
+// 		vector_[2].insert(vector_[2].begin() + 1, 0);
+// 		std::cout << "here3\n";
+// 	}
+// 	else if(index_main < sep && vector_[0][index_main] < v_tmp[0])
+// 	{
+// 		vector_[0].insert(vector_[0].begin() + sep, v_tmp[0]);
+// 		vector_[1].insert(vector_[1].begin() + sep + i, v_tmp[1]);
+// 		vector_[2].insert(vector_[2].begin() + sep + i, 0);
+// 		std::cout << "here4\n";
+// 	}
+// 	else if(index_main < sep)
+// 	{
+// 		vector_[0].insert(vector_[0].begin() + i, v_tmp[0]);
+// 		vector_[1].insert(vector_[1].begin() + i, v_tmp[1]);
+// 		vector_[2].insert(vector_[2].begin() + i, 0);
+// 		std::cout << "here1\n";
+// 	}
+// 	else
+// 	{
+// 		vector_[0].insert(vector_[0].begin() + (index_main + 1 + i), v_tmp[0]);
+// 		vector_[1].insert(vector_[1].begin() + (index_main + 1 + i), v_tmp[1]);
+// 		vector_[2].insert(vector_[2].begin() + (index_main + 1 + i), 0);
+// 		std::cout << "here2\n";
+// 	}
+// }
 
 void PmergeMe::FillLibn(int j_number)
 {

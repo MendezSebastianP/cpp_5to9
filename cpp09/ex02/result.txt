@@ -1,0 +1,504 @@
+11 2  17 0  16 8  6  15 10 3  21 1  18 9  14 19 12 5  4  20 13 7 
+sep 1 i: 0 vector compares 0|1
+sep 1 i: 2 vector compares 2|3
+sep 1 i: 4 vector compares 4|5
+sep 1 i: 6 vector compares 6|7
+sep 1 i: 8 vector compares 8|9
+sep 1 i: 10 vector compares 10|11
+sep 1 i: 12 vector compares 12|13
+sep 1 i: 14 vector compares 14|15
+sep 1 i: 16 vector compares 16|17
+sep 1 i: 18 vector compares 18|19
+sep 1 i: 20 vector compares 20|21
+2  11 0  17 8  16 6  15 3  10 1  21 9  18 14 19 5  12 4  20 7  13
+sep 2 i: 1 vector compares 1|3
+sep 2 i: 5 vector compares 5|7
+sep 2 i: 9 vector compares 9|11
+sep 2 i: 13 vector compares 13|15
+sep 2 i: 17 vector compares 17|19
+2  11 0  17 6  15 8  16 3  10 1  21 9  18 14 19 5  12 4  20 7  13
+sep 4 i: 3 vector compares 3|7
+sep 4 i: 11 vector compares 11|15
+6  15 8  16 2  11 0  17 9  18 14 19 3  10 1  21 5  12 4  20 7  13
+sep 8 i: 7 vector compares 7|15
+6  15 8  16 2  11 0  17 9  18 14 19 3  10 1  21 5  12 4  20 7  13
+n: 22. pow op: 64
+2305843009213693951
+0  1  1  3  5  11 21 43
+Before 
+
+6  15 8  16 2  11 0  17 9  18 14 19 3  10 1  21 5  12 4  20 7  13
+0  0  0  0  0  0  0  0  1  1  1  1  1  1  1  1  2  2  2  2  2  2 
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 
+After 
+
+
+Insertion not possible
+6  15 8  16 2  11 0  17 9  18 14 19 3  10 1  21 5  12 4  20 7  13
+
+Insertion not possible
+6  15 8  16 2  11 0  17 9  18 14 19 3  10 1  21 5  12 4  20 7  13
+
+6  15 8  16 2  11 0  17 9  18 14 19 3  10 1  21 5  12 4  20 7  13
+0  0  0  0  1  1  1  1  2  2  2  2  3  3  3  3  4  4  4  4  5  5 
+0  0  0  0  0  0  0  0  1  1  1  1  0  0  0  0  1  1  1  1  2  2 
+0  0  0  0  0  0  0  0  1  1  1  1  0  0  0  0  1  1  1  1  2  2 
+jacob:3. j_number: 4
+index_pend19
+
+
+FILL TEST ##################
+6  15 8  16 2  11 0  17 9  18 14 19 3  10 1  21 5  12 4  20 7  13
+0  0  0  0  1  1  1  1  2  2  2  2  3  3  3  3  4  4  4  4  5  5 
+0  0  0  0  0  0  0  0  1  1  1  1  0  0  0  0  1  1  1  1  2  2 
+FillLibn test, lib number: 21. lib index:15. Sep: 4
+FillLibn test, i: 15. Number: 21. j_number: 4
+FillLibn test, i: 11. Number: 19. j_number: 4
+FillLibn test, i: 7. Number: 17. j_number: 4
+FillLibn test, i: 3. Number: 16. j_number: 4
+16 17 21
+Level: 3. lib index: 1. lib number: 17. index_pend: 19. From: 20
+lib index in vector:7
+here2
+6  15 8  16 2  11 0  17 5  12 4  20 9  18 14 19 3  10 1  21 7  13
+0  0  0  0  1  1  1  1  4  4  4  4  2  2  2  2  3  3  3  3  5  5 
+0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  1  0  0  0  0  2  2 
+jacob:3. j_number: 2
+index_pend15
+
+
+FILL TEST ##################
+6  15 8  16 2  11 0  17 5  12 4  20 9  18 14 19 3  10 1  21 7  13
+0  0  0  0  1  1  1  1  4  4  4  4  2  2  2  2  3  3  3  3  5  5 
+0  0  0  0  0  0  0  0  0  0  0  0  1  1  1  1  0  0  0  0  2  2 
+FillLibn test, lib number: 17. lib index:7. Sep: 4
+FillLibn test, i: 7. Number: 17. j_number: 2
+FillLibn test, i: 3. Number: 16. j_number: 2
+16 17
+Level: 3. lib index: 1. lib number: 17. index_pend: 15. From: 19
+lib index in vector:7
+here2
+6  15 8  16 2  11 0  17 9  18 14 19 5  12 4  20 3  10 1  21 7  13
+0  0  0  0  1  1  1  1  2  2  2  2  4  4  4  4  3  3  3  3  5  5 
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  2  2 
+LOOP DONE, LVL DOWN ###################
+
+
+6  15 8  16 2  11 0  17 9  18 14 19 5  12 4  20 3  10 1  21 7  13
+
+6  15 8  16 2  11 0  17 9  18 14 19 5  12 4  20 3  10 1  21 7  13
+0  0  1  1  2  2  3  3  4  4  5  5  6  6  7  7  8  8  9  9  10 10
+0  0  0  0  1  1  0  0  1  1  0  0  1  1  0  0  1  1  0  0  1  1 
+0  0  0  0  1  1  0  0  1  1  0  0  1  1  0  0  1  1  0  0  1  1 
+jacob:3. j_number: 4
+index_pend9
+
+
+FILL TEST ##################
+6  15 8  16 2  11 0  17 9  18 14 19 5  12 4  20 3  10 1  21 7  13
+0  0  1  1  2  2  3  3  4  4  5  5  6  6  7  7  8  8  9  9  10 10
+0  0  0  0  1  1  0  0  1  1  0  0  1  1  0  0  1  1  0  0  1  1 
+FillLibn test, lib number: 17. lib index:7. Sep: 2
+FillLibn test, i: 7. Number: 17. j_number: 4
+FillLibn test, i: 5. Number: 11. j_number: 4
+FillLibn test, i: 3. Number: 16. j_number: 4
+FillLibn test, i: 1. Number: 15. j_number: 4
+15 16 17
+Level: 2. lib index: 2. lib number: 17. index_pend: 9. From: 18
+lib index in vector:7
+here2
+6  15 8  16 2  11 0  17 9  18 14 19 5  12 4  20 3  10 1  21 7  13
+0  0  1  1  2  2  3  3  4  4  5  5  6  6  7  7  8  8  9  9  10 10
+0  0  0  0  1  1  0  0  0  0  0  0  1  1  0  0  1  1  0  0  1  1 
+jacob:3. j_number: 2
+index_pend5
+
+
+FILL TEST ##################
+6  15 8  16 2  11 0  17 9  18 14 19 5  12 4  20 3  10 1  21 7  13
+0  0  1  1  2  2  3  3  4  4  5  5  6  6  7  7  8  8  9  9  10 10
+0  0  0  0  1  1  0  0  0  0  0  0  1  1  0  0  1  1  0  0  1  1 
+FillLibn test, lib number: 16. lib index:3. Sep: 2
+FillLibn test, i: 3. Number: 16. j_number: 2
+FillLibn test, i: 1. Number: 15. j_number: 2
+15 16
+Level: 2. lib index: 0. lib number: 15. index_pend: 5. From: 11
+lib index in vector:1
+here1
+2  11 6  15 8  16 0  17 9  18 14 19 5  12 4  20 3  10 1  21 7  13
+2  2  0  0  1  1  3  3  4  4  5  5  6  6  7  7  8  8  9  9  10 10
+0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  1  1  0  0  1  1 
+0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  1  1  0  0  1  1 
+jacob:5. j_number: 8
+index_pend17
+
+
+FILL TEST ##################
+2  11 6  15 8  16 0  17 9  18 14 19 5  12 4  20 3  10 1  21 7  13
+2  2  0  0  1  1  3  3  4  4  5  5  6  6  7  7  8  8  9  9  10 10
+0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  1  1  0  0  1  1 
+FillLibn test, lib number: 20. lib index:15. Sep: 2
+FillLibn test, i: 15. Number: 20. j_number: 8
+FillLibn test, i: 13. Number: 12. j_number: 8
+FillLibn test, i: 11. Number: 19. j_number: 8
+FillLibn test, i: 9. Number: 18. j_number: 8
+FillLibn test, i: 7. Number: 17. j_number: 8
+FillLibn test, i: 5. Number: 16. j_number: 8
+FillLibn test, i: 3. Number: 15. j_number: 8
+FillLibn test, i: 1. Number: 11. j_number: 8
+11 15 16 17 18 19 20
+Level: 2. lib index: 0. lib number: 11. index_pend: 17. From: 10
+lib index in vector:1
+here1
+3  10 2  11 6  15 8  16 0  17 9  18 14 19 5  12 4  20 1  21 7  13
+8  8  2  2  0  0  1  1  3  3  4  4  5  5  6  6  7  7  9  9  10 10
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  1  1 
+jacob:5. j_number: 6
+index_pend15
+
+
+FILL TEST ##################
+3  10 2  11 6  15 8  16 0  17 9  18 14 19 5  12 4  20 1  21 7  13
+8  8  2  2  0  0  1  1  3  3  4  4  5  5  6  6  7  7  9  9  10 10
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1  0  0  0  0  1  1 
+FillLibn test, lib number: 19. lib index:13. Sep: 2
+FillLibn test, i: 13. Number: 19. j_number: 6
+FillLibn test, i: 11. Number: 18. j_number: 6
+FillLibn test, i: 9. Number: 17. j_number: 6
+FillLibn test, i: 7. Number: 16. j_number: 6
+FillLibn test, i: 5. Number: 15. j_number: 6
+FillLibn test, i: 3. Number: 11. j_number: 6
+FillLibn test, i: 1. Number: 10. j_number: 6
+10 11 15 16 17 18 19
+Level: 2. lib index: 1. lib number: 11. index_pend: 15. From: 12
+lib index in vector:3
+here2
+3  10 2  11 5  12 6  15 8  16 0  17 9  18 14 19 4  20 1  21 7  13
+8  8  2  2  6  6  0  0  1  1  3  3  4  4  5  5  7  7  9  9  10 10
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1 
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1 
+jacob:11. j_number: 20
+index_pend23
+limit 1
+limit 2
+
+
+FILL TEST ##################
+3  10 2  11 5  12 6  15 8  16 0  17 9  18 14 19 4  20 1  21 7  13
+8  8  2  2  6  6  0  0  1  1  3  3  4  4  5  5  7  7  9  9  10 10
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  1 
+FillLibn test, lib number: 21. lib index:19. Sep: 2
+FillLibn test, i: 19. Number: 21. j_number: 20
+FillLibn test, i: 17. Number: 20. j_number: 20
+FillLibn test, i: 15. Number: 19. j_number: 20
+FillLibn test, i: 13. Number: 18. j_number: 20
+FillLibn test, i: 11. Number: 17. j_number: 20
+FillLibn test, i: 9. Number: 16. j_number: 20
+FillLibn test, i: 7. Number: 15. j_number: 20
+FillLibn test, i: 5. Number: 12. j_number: 20
+FillLibn test, i: 3. Number: 11. j_number: 20
+FillLibn test, i: 1. Number: 10. j_number: 20
+10 11 12 15 16 17 18 19 20 21
+Level: 2. lib index: 2. lib number: 12. index_pend: 21. From: 13
+lib index in vector:5
+here2
+3  10 2  11 5  12 7  13 6  15 8  16 0  17 9  18 14 19 4  20 1  21
+8  8  2  2  6  6  10 10 0  0  1  1  3  3  4  4  5  5  7  7  9  9 
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 
+LOOP DONE, LVL DOWN ###################
+
+
+3  10 2  11 5  12 7  13 6  15 8  16 0  17 9  18 14 19 4  20 1  21
+
+3  10 2  11 5  12 7  13 6  15 8  16 0  17 9  18 14 19 4  20 1  21
+0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21
+0  0  1  0  1  0  1  0  1  0  1  0  1  0  1  0  1  0  1  0  1  0 
+0  0  1  0  1  0  1  0  1  0  1  0  1  0  1  0  1  0  1  0  1  0 
+jacob:3. j_number: 4
+index_pend4
+
+
+FILL TEST ##################
+3  10 2  11 5  12 7  13 6  15 8  16 0  17 9  18 14 19 4  20 1  21
+0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21
+0  0  1  0  1  0  1  0  1  0  1  0  1  0  1  0  1  0  1  0  1  0 
+FillLibn test, lib number: 11. lib index:3. Sep: 1
+FillLibn test, i: 3. Number: 11. j_number: 4
+FillLibn test, i: 2. Number: 2. j_number: 4
+FillLibn test, i: 1. Number: 10. j_number: 4
+FillLibn test, i: 0. Number: 3. j_number: 4
+3  10 11
+Level: 1. lib index: 0. lib number: 3. index_pend: 4. From: 5
+lib index in vector:0
+main 3. pend 5
+main index 0. pend index 4
+here3
+3  5  10 2  11 12 7  13 6  15 8  16 0  17 9  18 14 19 4  20 1  21
+0  4  1  2  3  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21
+0  0  0  1  0  0  1  0  1  0  1  0  1  0  1  0  1  0  1  0  1  0 
+jacob:3. j_number: 2
+index_pend3
+
+
+FILL TEST ##################
+3  5  10 2  11 12 7  13 6  15 8  16 0  17 9  18 14 19 4  20 1  21
+0  4  1  2  3  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21
+0  0  0  1  0  0  1  0  1  0  1  0  1  0  1  0  1  0  1  0  1  0 
+FillLibn test, lib number: 10. lib index:2. Sep: 1
+FillLibn test, i: 2. Number: 10. j_number: 2
+FillLibn test, i: 1. Number: 5. j_number: 2
+FillLibn test, i: 0. Number: 3. j_number: 2
+3  5  10
+Level: 1. lib index: 0. lib number: 3. index_pend: 3. From: 2
+lib index in vector:0
+here1
+2  3  5  10 11 12 7  13 6  15 8  16 0  17 9  18 14 19 4  20 1  21
+2  0  4  1  3  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21
+0  0  0  0  0  0  1  0  1  0  1  0  1  0  1  0  1  0  1  0  1  0 
+0  0  0  0  0  0  1  0  1  0  1  0  1  0  1  0  1  0  1  0  1  0 
+jacob:5. j_number: 8
+index_pend8
+
+
+FILL TEST ##################
+2  3  5  10 11 12 7  13 6  15 8  16 0  17 9  18 14 19 4  20 1  21
+2  0  4  1  3  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21
+0  0  0  0  0  0  1  0  1  0  1  0  1  0  1  0  1  0  1  0  1  0 
+FillLibn test, lib number: 13. lib index:7. Sep: 1
+FillLibn test, i: 7. Number: 13. j_number: 8
+FillLibn test, i: 6. Number: 7. j_number: 8
+FillLibn test, i: 5. Number: 12. j_number: 8
+FillLibn test, i: 4. Number: 11. j_number: 8
+FillLibn test, i: 3. Number: 10. j_number: 8
+FillLibn test, i: 2. Number: 5. j_number: 8
+FillLibn test, i: 1. Number: 3. j_number: 8
+FillLibn test, i: 0. Number: 2. j_number: 8
+2  3  5  10 11 12 13
+Level: 1. lib index: 2. lib number: 5. index_pend: 8. From: 6
+lib index in vector:2
+here2
+2  3  5  6  10 11 12 7  13 15 8  16 0  17 9  18 14 19 4  20 1  21
+2  0  4  8  1  3  5  6  7  9  10 11 12 13 14 15 16 17 18 19 20 21
+0  0  0  0  0  0  0  1  0  0  1  0  1  0  1  0  1  0  1  0  1  0 
+jacob:5. j_number: 6
+index_pend7
+
+
+FILL TEST ##################
+2  3  5  6  10 11 12 7  13 15 8  16 0  17 9  18 14 19 4  20 1  21
+2  0  4  8  1  3  5  6  7  9  10 11 12 13 14 15 16 17 18 19 20 21
+0  0  0  0  0  0  0  1  0  0  1  0  1  0  1  0  1  0  1  0  1  0 
+FillLibn test, lib number: 12. lib index:6. Sep: 1
+FillLibn test, i: 6. Number: 12. j_number: 6
+FillLibn test, i: 5. Number: 11. j_number: 6
+FillLibn test, i: 4. Number: 10. j_number: 6
+FillLibn test, i: 3. Number: 6. j_number: 6
+FillLibn test, i: 2. Number: 5. j_number: 6
+FillLibn test, i: 1. Number: 3. j_number: 6
+FillLibn test, i: 0. Number: 2. j_number: 6
+2  3  5  6  10 11 12
+Level: 1. lib index: 3. lib number: 6. index_pend: 7. From: 7
+lib index in vector:3
+here2
+2  3  5  6  7  10 11 12 13 15 8  16 0  17 9  18 14 19 4  20 1  21
+2  0  4  8  6  1  3  5  7  9  10 11 12 13 14 15 16 17 18 19 20 21
+0  0  0  0  0  0  0  0  0  0  1  0  1  0  1  0  1  0  1  0  1  0 
+0  0  0  0  0  0  0  0  0  0  1  0  1  0  1  0  1  0  1  0  1  0 
+jacob:11. j_number: 20
+index_pend20
+
+
+FILL TEST ##################
+2  3  5  6  7  10 11 12 13 15 8  16 0  17 9  18 14 19 4  20 1  21
+2  0  4  8  6  1  3  5  7  9  10 11 12 13 14 15 16 17 18 19 20 21
+0  0  0  0  0  0  0  0  0  0  1  0  1  0  1  0  1  0  1  0  1  0 
+FillLibn test, lib number: 20. lib index:19. Sep: 1
+FillLibn test, i: 19. Number: 20. j_number: 20
+FillLibn test, i: 18. Number: 4. j_number: 20
+FillLibn test, i: 17. Number: 19. j_number: 20
+FillLibn test, i: 16. Number: 14. j_number: 20
+FillLibn test, i: 15. Number: 18. j_number: 20
+FillLibn test, i: 14. Number: 9. j_number: 20
+FillLibn test, i: 13. Number: 17. j_number: 20
+FillLibn test, i: 12. Number: 0. j_number: 20
+FillLibn test, i: 11. Number: 16. j_number: 20
+FillLibn test, i: 10. Number: 8. j_number: 20
+FillLibn test, i: 9. Number: 15. j_number: 20
+FillLibn test, i: 8. Number: 13. j_number: 20
+FillLibn test, i: 7. Number: 12. j_number: 20
+FillLibn test, i: 6. Number: 11. j_number: 20
+FillLibn test, i: 5. Number: 10. j_number: 20
+FillLibn test, i: 4. Number: 7. j_number: 20
+FillLibn test, i: 3. Number: 6. j_number: 20
+FillLibn test, i: 2. Number: 5. j_number: 20
+FillLibn test, i: 1. Number: 3. j_number: 20
+FillLibn test, i: 0. Number: 2. j_number: 20
+2  3  5  6  7  10 11 12 13 15 16 17 18 19 20
+Level: 1. lib index: 0. lib number: 2. index_pend: 20. From: 1
+lib index in vector:0
+here1
+1  2  3  5  6  7  10 11 12 13 15 8  16 0  17 9  18 14 19 4  20 21
+20 2  0  4  8  6  1  3  5  7  9  10 11 12 13 14 15 16 17 18 19 21
+0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  1  0  1  0  1  0  0 
+jacob:11. j_number: 18
+index_pend19
+
+
+FILL TEST ##################
+1  2  3  5  6  7  10 11 12 13 15 8  16 0  17 9  18 14 19 4  20 21
+20 2  0  4  8  6  1  3  5  7  9  10 11 12 13 14 15 16 17 18 19 21
+0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  1  0  1  0  1  0  0 
+FillLibn test, lib number: 19. lib index:18. Sep: 1
+FillLibn test, i: 18. Number: 19. j_number: 18
+FillLibn test, i: 17. Number: 14. j_number: 18
+FillLibn test, i: 16. Number: 18. j_number: 18
+FillLibn test, i: 15. Number: 9. j_number: 18
+FillLibn test, i: 14. Number: 17. j_number: 18
+FillLibn test, i: 13. Number: 0. j_number: 18
+FillLibn test, i: 12. Number: 16. j_number: 18
+FillLibn test, i: 11. Number: 8. j_number: 18
+FillLibn test, i: 10. Number: 15. j_number: 18
+FillLibn test, i: 9. Number: 13. j_number: 18
+FillLibn test, i: 8. Number: 12. j_number: 18
+FillLibn test, i: 7. Number: 11. j_number: 18
+FillLibn test, i: 6. Number: 10. j_number: 18
+FillLibn test, i: 5. Number: 7. j_number: 18
+FillLibn test, i: 4. Number: 6. j_number: 18
+FillLibn test, i: 3. Number: 5. j_number: 18
+FillLibn test, i: 2. Number: 3. j_number: 18
+FillLibn test, i: 1. Number: 2. j_number: 18
+FillLibn test, i: 0. Number: 1. j_number: 18
+1  2  3  5  6  7  10 11 12 13 15 16 17 18 19
+Level: 1. lib index: 2. lib number: 3. index_pend: 19. From: 4
+lib index in vector:2
+here2
+1  2  3  4  5  6  7  10 11 12 13 15 8  16 0  17 9  18 14 19 20 21
+20 2  0  18 4  8  6  1  3  5  7  9  10 11 12 13 14 15 16 17 19 21
+0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  1  0  1  0  0  0 
+jacob:11. j_number: 16
+index_pend18
+
+
+FILL TEST ##################
+1  2  3  4  5  6  7  10 11 12 13 15 8  16 0  17 9  18 14 19 20 21
+20 2  0  18 4  8  6  1  3  5  7  9  10 11 12 13 14 15 16 17 19 21
+0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  1  0  1  0  0  0 
+FillLibn test, lib number: 18. lib index:17. Sep: 1
+FillLibn test, i: 17. Number: 18. j_number: 16
+FillLibn test, i: 16. Number: 9. j_number: 16
+FillLibn test, i: 15. Number: 17. j_number: 16
+FillLibn test, i: 14. Number: 0. j_number: 16
+FillLibn test, i: 13. Number: 16. j_number: 16
+FillLibn test, i: 12. Number: 8. j_number: 16
+FillLibn test, i: 11. Number: 15. j_number: 16
+FillLibn test, i: 10. Number: 13. j_number: 16
+FillLibn test, i: 9. Number: 12. j_number: 16
+FillLibn test, i: 8. Number: 11. j_number: 16
+FillLibn test, i: 7. Number: 10. j_number: 16
+FillLibn test, i: 6. Number: 7. j_number: 16
+FillLibn test, i: 5. Number: 6. j_number: 16
+FillLibn test, i: 4. Number: 5. j_number: 16
+FillLibn test, i: 3. Number: 4. j_number: 16
+FillLibn test, i: 2. Number: 3. j_number: 16
+FillLibn test, i: 1. Number: 2. j_number: 16
+FillLibn test, i: 0. Number: 1. j_number: 16
+1  2  3  4  5  6  7  10 11 12 13 15 16 17 18
+Level: 1. lib index: 10. lib number: 13. index_pend: 18. From: 14
+lib index in vector:10
+here2
+1  2  3  4  5  6  7  10 11 12 13 14 15 8  16 0  17 9  18 19 20 21
+20 2  0  18 4  8  6  1  3  5  7  16 9  10 11 12 13 14 15 17 19 21
+0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  1  0  0  0  0 
+jacob:11. j_number: 14
+index_pend17
+
+
+FILL TEST ##################
+1  2  3  4  5  6  7  10 11 12 13 14 15 8  16 0  17 9  18 19 20 21
+20 2  0  18 4  8  6  1  3  5  7  16 9  10 11 12 13 14 15 17 19 21
+0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  1  0  0  0  0 
+FillLibn test, lib number: 13. lib index:10. Sep: 1
+FillLibn test, i: 10. Number: 13. j_number: 14
+FillLibn test, i: 9. Number: 12. j_number: 14
+FillLibn test, i: 8. Number: 11. j_number: 14
+FillLibn test, i: 7. Number: 10. j_number: 14
+FillLibn test, i: 6. Number: 7. j_number: 14
+FillLibn test, i: 5. Number: 6. j_number: 14
+FillLibn test, i: 4. Number: 5. j_number: 14
+FillLibn test, i: 3. Number: 4. j_number: 14
+FillLibn test, i: 2. Number: 3. j_number: 14
+FillLibn test, i: 1. Number: 2. j_number: 14
+FillLibn test, i: 0. Number: 1. j_number: 14
+1  2  3  4  5  6  7  10 11 12 13
+Level: 1. lib index: 6. lib number: 7. index_pend: 17. From: 9
+lib index in vector:6
+here2
+1  2  3  4  5  6  7  9  10 11 12 13 14 15 8  16 0  17 18 19 20 21
+20 2  0  18 4  8  6  14 1  3  5  7  16 9  10 11 12 13 15 17 19 21
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  0  0  0  0 
+jacob:11. j_number: 12
+index_pend16
+
+
+FILL TEST ##################
+1  2  3  4  5  6  7  9  10 11 12 13 14 15 8  16 0  17 18 19 20 21
+20 2  0  18 4  8  6  14 1  3  5  7  16 9  10 11 12 13 15 17 19 21
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  1  0  0  0  0  0 
+FillLibn test, lib number: 16. lib index:15. Sep: 1
+FillLibn test, i: 15. Number: 16. j_number: 12
+FillLibn test, i: 14. Number: 8. j_number: 12
+FillLibn test, i: 13. Number: 15. j_number: 12
+FillLibn test, i: 12. Number: 14. j_number: 12
+FillLibn test, i: 11. Number: 13. j_number: 12
+FillLibn test, i: 10. Number: 12. j_number: 12
+FillLibn test, i: 9. Number: 11. j_number: 12
+FillLibn test, i: 8. Number: 10. j_number: 12
+FillLibn test, i: 7. Number: 9. j_number: 12
+FillLibn test, i: 6. Number: 7. j_number: 12
+FillLibn test, i: 5. Number: 6. j_number: 12
+FillLibn test, i: 4. Number: 5. j_number: 12
+FillLibn test, i: 3. Number: 4. j_number: 12
+FillLibn test, i: 2. Number: 3. j_number: 12
+FillLibn test, i: 1. Number: 2. j_number: 12
+FillLibn test, i: 0. Number: 1. j_number: 12
+1  2  3  4  5  6  7  9  10 11 12 13 14 15 16
+Level: 1. lib index: 0. lib number: 1. index_pend: 16. From: 0
+lib index in vector:0
+here1
+0  1  2  3  4  5  6  7  9  10 11 12 13 14 15 8  16 17 18 19 20 21
+12 20 2  0  18 4  8  6  14 1  3  5  7  16 9  10 11 13 15 17 19 21
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0 
+jacob:11. j_number: 10
+index_pend15
+
+
+FILL TEST ##################
+0  1  2  3  4  5  6  7  9  10 11 12 13 14 15 8  16 17 18 19 20 21
+12 20 2  0  18 4  8  6  14 1  3  5  7  16 9  10 11 13 15 17 19 21
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  1  0  0  0  0  0  0 
+FillLibn test, lib number: 15. lib index:14. Sep: 1
+FillLibn test, i: 14. Number: 15. j_number: 10
+FillLibn test, i: 13. Number: 14. j_number: 10
+FillLibn test, i: 12. Number: 13. j_number: 10
+FillLibn test, i: 11. Number: 12. j_number: 10
+FillLibn test, i: 10. Number: 11. j_number: 10
+FillLibn test, i: 9. Number: 10. j_number: 10
+FillLibn test, i: 8. Number: 9. j_number: 10
+FillLibn test, i: 7. Number: 7. j_number: 10
+FillLibn test, i: 6. Number: 6. j_number: 10
+FillLibn test, i: 5. Number: 5. j_number: 10
+FillLibn test, i: 4. Number: 4. j_number: 10
+FillLibn test, i: 3. Number: 3. j_number: 10
+FillLibn test, i: 2. Number: 2. j_number: 10
+FillLibn test, i: 1. Number: 1. j_number: 10
+FillLibn test, i: 0. Number: 0. j_number: 10
+0  1  2  3  4  5  6  7  9  10 11 12 13 14 15
+Level: 1. lib index: 7. lib number: 7. index_pend: 15. From: 8
+lib index in vector:7
+here2
+0  1  2  3  4  5  6  7  8  9  10 11 12 13 14 15 16 17 18 19 20 21
+12 20 2  0  18 4  8  6  10 14 1  3  5  7  16 9  11 13 15 17 19 21
+0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0  0 
+LOOP DONE, LVL DOWN ###################
+
+

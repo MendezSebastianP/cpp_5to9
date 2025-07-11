@@ -13,6 +13,9 @@ void sep( size_t n, std::string msg)
 
 int main()
 {
+	std::vector<int>::iterator it;
+	std::list<int>::iterator it2;
+	std::deque<int>::iterator it3;
 // 1) Test with vector
 	sep(2, "VECTOR"); 
 	std::vector<int> v; 
@@ -22,23 +25,14 @@ int main()
 		v.push_back(data[i]);
 	}
 
-	std::vector<int>::iterator it = easyfind(v, 20);
+	try {it = easyfind(v, 20);}
+	catch(const std::exception& e) { std::cerr << e.what() << '\n';}
 	if (it == v.end())
 		std::cout << "Number not found in vector" << std::endl;
 	else
 		std::cout << "Found in vector: " << *it << "\n";
-	sep(0, "NOT VALID");
-	it = easyfind(v, 25);
-	if (it == v.end())
-		std::cout << "Number not found in vector" << std::endl;
-	else
-		std::cout << "Found in vector: " << *it << "\n";
-	
-	it = easyfind(v, 0);
-	if (it == v.end())
-		std::cout << "Number not found in vector" << std::endl;
-	else
-		std::cout << "Found in vector: " << *it << "\n";
+	try {it = easyfind(v, 25);}
+	catch(const std::exception& e) { std::cerr << e.what() << '\n';}
 
 // 2) Test with list
 	sep(2, "LIST");
@@ -49,23 +43,15 @@ int main()
 		l2.push_back(data2[i]);
 	}
 
-	std::list<int>::iterator it2 = easyfind(l2, 30);
+	try {it2 = easyfind(l2, 30);}
+	catch(const std::exception& e) { std::cerr << e.what() << '\n';}
 	if (it2 == l2.end())
-		std::cout << "Number not found in list" << std::endl;
+		std::cout << "Number not found in vector" << std::endl;
 	else
-		std::cout << "Found in list: " << *it2 << "\n";
-	sep(0, "NOT VALID");
-	it2 = easyfind(l2, 25);
-	if (it2 == l2.end())
-		std::cout << "Number not found in list" << std::endl;
-	else
-		std::cout << "Found in list: " << *it2 << "\n";
+		std::cout << "Found in vector: " << *it2 << "\n";
+	try {it2 = easyfind(l2, 35);}
+	catch(const std::exception& e) { std::cerr << e.what() << '\n';}
 	
-	it2 = easyfind(l2, 0);
-	if (it2 == l2.end())
-		std::cout << "Number not found in list" << std::endl;
-	else
-		std::cout << "Found in list: " << *it2 << "\n";
 
 // 3) Test with deque
 	sep(2, "DEQUE");
@@ -76,22 +62,13 @@ int main()
 		l3.push_back(data3[i]);
 	}
 
-	std::deque<int>::iterator it3 = easyfind(l3, 40);
-	if (it3 == l3.end())
-		std::cout << "Number not found in deque" << std::endl;
-	else
-		std::cout << "Found in deque: " << *it3 << "\n";
-	sep(0, "NOT VALID");
-	it3 = easyfind(l3, 25);
-	if (it3 == l3.end())
-		std::cout << "Number not found in deque" << std::endl;
-	else
-		std::cout << "Found in deque: " << *it3 << "\n";
 	
-	it3 = easyfind(l3, 0);
+	try {it3 = easyfind(l3, 40);}
+	catch(const std::exception& e) { std::cerr << e.what() << '\n';}
 	if (it3 == l3.end())
-		std::cout << "Number not found in deque" << std::endl;
+		std::cout << "Number not found in vector" << std::endl;
 	else
-		std::cout << "Found in deque: " << *it3 << "\n";
-
+		std::cout << "Found in vector: " << *it3 << "\n";
+	try {it3 = easyfind(l3, 45);}
+	catch(const std::exception& e) { std::cerr << e.what() << '\n';}
 }

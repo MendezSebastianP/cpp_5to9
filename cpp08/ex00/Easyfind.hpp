@@ -5,6 +5,8 @@
 # include <vector>
 # include <list>
 # include <deque>
+# include <algorithm>
+# include <exception>
 
 template< typename T>
 typename T::iterator easyfind(T &a, int const numb);

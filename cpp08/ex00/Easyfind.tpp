@@ -1,11 +1,11 @@
 template< typename T>
 typename T::iterator easyfind(T &a, int const numb)
 {
-	for (typename T::iterator i = a.begin(); i != a.end(); i++) 
+	typename T::iterator result = std::find(a.begin(), a.end(), numb);
+	if (result == a.end())
 	{
-		if (*i == numb)
-			return i;
+		throw std::invalid_argument("\n Value not found.\n");
 	}
-	return a.end();
+	return (result);
 }
 

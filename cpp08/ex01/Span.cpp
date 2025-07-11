@@ -63,10 +63,10 @@ int Span::shortestSpan( void ) const
 	}
 	if (samenumber)
 		return 0;
-	for (std::set<int>::iterator i = span_.begin(); i != span_.end() && (static_cast<const unsigned int>(*i)) < count_n_; i++)
+	while (it2 != span_.end())
 	{
 		// std::cout << (static_cast<const unsigned int>(*i)) <<" number\n";
-		// std::cout << shortest <<" shortest\n";
+		// std::cout << shortest <<" shortest\n it1: " << *it1 << ". it2: " << *it2 << "\n";
 		if (it2 != span_.end())
 		{
 			dif = std::abs(*it2 - *it1);
@@ -77,6 +77,7 @@ int Span::shortestSpan( void ) const
 			break;
 		std::advance(it1, 1);
 		std::advance(it2, 1);
+		// std::cout << "next step\n it1: " << *it1 << ". it2: " << *it2 << "\n";
 	}
 	// std::cout << shortest <<" shortest\n";
 	return shortest;

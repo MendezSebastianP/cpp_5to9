@@ -26,10 +26,12 @@ class PmergeMe {
 	// init
 	int GetInput( char *str);
 	int FillVector( void );
+	void ArrangeVector( char *args[] );
 
 	// utils
 	void FillBlocks();
 	void SwapBlocks(int a, int b);
+	std::vector<int> getVector();
 
 	// swap functions
 	void JacobsthalSec(void);
@@ -40,10 +42,11 @@ class PmergeMe {
 	void FillMainPend();
 	void FillLibn( int lib );
 	
+	private:
 	std::vector< std::vector<int> > vector_;
 	std::vector<int> jacob_;
 	std::vector< std::vector<int> > lib_n_;
-	private:
+	
 	std::string input_;
 	int level_;
 };

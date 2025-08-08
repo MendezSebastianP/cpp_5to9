@@ -8,31 +8,24 @@ int	main(int argc, char **argv)
 		return (EXIT_FAILURE);
 	}
 	PmergeMe PmergeMe;
-	PmergeMe.GetInput(argv[1]);
+	if (argc > 2)
+		PmergeMe.ArrangeVector(argv);
+	else
+		PmergeMe.GetInput(argv[1]);
 	if (PmergeMe.FillVector())
 	{
 		std::cerr << ARG_ERR << std::endl;
 		return (EXIT_FAILURE);
 	}
-	// PrintVector(PmergeMe.vector_[0]);
 	while (PmergeMe.DividePairsRest())
-	{
-		// PrintVector(PmergeMe.vector_[0]);
-	}
+	{}
 	PmergeMe.JacobsthalSec();
-	// PrintVector(PmergeMe.jacob_);
-	// PrintVector(PmergeMe.vector_[0]);
-	// PrintVector(PmergeMe.vector_[1]);
-	// PrintVector(PmergeMe.vector_[2]);
-	while (PmergeMe.Insertion())
-	{
-		// PrintVector(PmergeMe.vector_[0]);
-	}
-	bool sorted = std::adjacent_find(PmergeMe.vector_[0].begin(), PmergeMe.vector_[0].end(), std::greater<int>()) 
-              == PmergeMe.vector_[0].end();
+	while (PmergeMe.Insertion()) {}
+	std::vector<int> const & v = PmergeMe.getVector();
+	bool sorted = std::adjacent_find(v.begin(), v.end(), std::greater<int>()) == v.end();
 	if (!sorted) {
 		std::cerr << "Not sorted!\n";
 	}
-	PrintVector(PmergeMe.vector_[0]);
+	PrintVector(PmergeMe.getVector());
 	return (EXIT_SUCCESS);
 }

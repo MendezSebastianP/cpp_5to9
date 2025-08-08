@@ -42,6 +42,11 @@ int to_int(const std::string &str)
 	return x;
 }
 
+std::vector<int> PmergeMe::getVector()
+{
+	return (vector_[0]);
+}
+
 void PrintVector(std::vector<int> vector) 
 {
     for (size_t i = 0; i < vector.size(); ++i) 
@@ -69,6 +74,15 @@ int PmergeMe::GetInput(char *str)
 {
 	input_= str;
 	return (EXIT_SUCCESS);
+}
+
+void PmergeMe::ArrangeVector( char *args[] )
+{
+	for(int i = 1; args[i]; i++)
+	{
+		input_.replace(input_.size(), strlen(args[i]), args[i]);
+		input_.replace(input_.size(), 1, " ");
+	}
 }
 
 int PmergeMe::FillVector(void)

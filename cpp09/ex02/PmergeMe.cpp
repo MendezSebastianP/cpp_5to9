@@ -6,7 +6,7 @@
 #include <iterator>
 #include <iostream>
 
-// Jacobsthal numbers: J(0)=0, J(1)=1, J(n)=J(n-1)+2*J(n-2)
+// Jacobsthal numbers
 static std::vector<size_t> jacobSeqUntil(size_t limit) {
     std::vector<size_t> j; j.reserve(64);
     j.push_back(0); j.push_back(1);

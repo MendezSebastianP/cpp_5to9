@@ -57,7 +57,7 @@ int RPN::FillStack(void)
 {
 	std::istringstream stream(input_);
     std::string buffer;
-	int tmp, op, n_num = 0, n_op = 0, block_n = 0;
+	int op, n_num = 0, n_op = 0, block_n = 0;
 	double a, b, result;
     while (getline(stream, buffer, ' ')) 
 	{

@@ -1,72 +1,39 @@
 #ifndef PMERGEME_HPP
-# define PMERGEME_HPP
-# include <iostream>
-# include <fstream>
-# include <string>
-# include <string.h> 
-# include <cctype>
-# include <vector>
-# include <deque>
-# include <cstdlib>
-# include <sstream>
-# include <cmath>
-# include <algorithm>
-# define ARG_ERR "Please, give a valid argument: a list of integers without duplicates."
+#define PMERGEME_HPP
 
-
+#include <vector>
+#include <deque>
+#include <utility>
+#include <algorithm>
+#include <stdexcept>
+#include <cstddef>
 
 class PmergeMe {
-	// canonic
-    public:
-	PmergeMe( void );
-	~PmergeMe( void );
-	PmergeMe( PmergeMe const &src );
-	PmergeMe & operator =( PmergeMe const & rhs );
+public:
+    // Sort using merge-insertion (Ford–Johnson) for std::vector
+    static void sortVector(std::vector<int>& v);
+    // Sort using merge-insertion (Ford–Johnson) for std::deque
+    static void sortDeque(std::deque<int>& d);
 
-	// init
-	int GetInput( char *str);
-	int FillVector( void );
-	void ArrangeVector( char *args[] );
+private:
+    // vector helpers
+    static void fjSortVector(std::vector<int>& v);
+    static void buildPairsVector(const std::vector<int>& v,
+                                 std::vector< std::pair<int,int> >& pairs,
+                                 bool& hasOdd, int& oddVal);
+    static void insertPendantsVector(std::vector<int>& mainChain,
+                                     const std::vector< std::pair<int,int> >& pairs);
 
-	// utils
-	void FillBlocks();
-	void SwapBlocks(int a, int b);
-	std::vector<int> getVector();
+    // deque helpers
+    static void fjSortDeque(std::deque<int>& d);
+    static void buildPairsDeque(const std::deque<int>& d,
+                                std::vector< std::pair<int,int> >& pairs,
+                                bool& hasOdd, int& oddVal);
+    static void insertPendantsDeque(std::deque<int>& mainChain,
+                                    const std::vector< std::pair<int,int> >& pairs);
 
-	// swap functions
-	void JacobsthalSec(void);
-	bool DividePairsFirst( void );
-	bool DividePairsRest( void );
-	bool Insertion( void );
-	void BlockInsertion( int index_main, int index_pend, int sep );
-	void FillMainPend();
-	void FillLibn( int lib );
-	
-	private:
-	std::vector< std::vector<int> > vector_;
-	std::vector<int> jacob_;
-	std::vector< std::vector<int> > lib_n_;
-	
-	std::string input_;
-	int level_;
+    // shared helper to compute Jacobsthal insertion order (0-based pair indices)
+    static std::vector<size_t> jacobInsertionOrder(size_t nPairs);
 };
 
-// helpful functions/templates
-
-void PrintVector(std::vector<int> vector);
-double to_double(const std::string &str);
-int to_int(const std::string &str);
-bool is_number(const std::string& s);
-
-template <typename T>
-std::string to_string_easy(T value) {
-    std::ostringstream oss;
-    oss << value;
-    return oss.str();
-}
-
-// subject functions
-
-int nmax(int n);
-
-#endif
+#endif // PMERGEME_HPP

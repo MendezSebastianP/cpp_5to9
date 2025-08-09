@@ -34,8 +34,7 @@ double to_double(const std::string& s) {
 unsigned int BitcoinExchange::DateToInt(std::string str)
 {
 	int year, month, day;
-	double value;
-	char bufy[10], bufm[10], bufd[10], str_value[10];
+	char bufy[10], bufm[10], bufd[10];
 
 	// check the lenght and form
 	if (str.length() != 10)
